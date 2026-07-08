@@ -1,5 +1,6 @@
 import { Button } from "@/components/shared";
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -15,10 +16,14 @@ export function Hero() {
               AI-powered career matching platform that helps candidates discover the perfect opportunities through intelligent job matching.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button size="xl" className="font-semibold w-full sm:w-auto">Get Started</Button>
-              <Button variant="outline" size="xl" leftIcon={<Play className="w-5 h-5 fill-current" />} className="font-semibold w-full sm:w-auto">
-                Watch Demo
-              </Button>
+              <Link href="/dev/job-feed" className="w-full sm:w-auto">
+                <Button size="xl" className="font-semibold w-full">Get Started</Button>
+              </Link>
+              <Link href="/dev/career-chemistry" className="w-full sm:w-auto">
+                <Button variant="outline" size="xl" leftIcon={<Play className="w-5 h-5 fill-current" />} className="font-semibold w-full">
+                  Career Chemistry Demo
+                </Button>
+              </Link>
             </div>
           </div>
           

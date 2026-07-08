@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Card, CardHeader, CardContent, CardFooter, CardBadge } from "@/components/ui";
 import { Button } from "@/components/shared";
+import { MatchScore } from "@/components/ai";
 import { 
   Building2, MapPin, DollarSign, Briefcase, 
   Clock, Bookmark, BookmarkCheck, CheckCircle2, 
@@ -85,10 +86,10 @@ export function JobCard({
         </CardBadge>
       )}
 
-      {matchPercentage && matchPercentage >= 80 && (
-        <CardBadge className="bg-success text-success-foreground z-10">
-          {matchPercentage}% Match
-        </CardBadge>
+      {matchPercentage !== undefined && (
+        <div className="absolute top-4 right-4 z-10 transform scale-50 sm:scale-[0.6] origin-top-right pointer-events-none">
+          <MatchScore score={matchPercentage} />
+        </div>
       )}
 
       <CardHeader className={cn("pb-4", featured ? "pt-12" : "pt-6")}>

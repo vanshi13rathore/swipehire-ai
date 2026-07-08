@@ -8,12 +8,36 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/shared";
 import { X, Heart, Star, RotateCcw } from "lucide-react";
 
+interface Decision {
+  jobId: string;
+  action: "skip" | "interested" | "dream-job";
+  timestamp: number;
+}
+
 export function SwipeStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | "up" | null>(null);
+  const [decisions, setDecisions] = useState<Decision[]>([]);
 
   const handleNext = (dir: "left" | "right" | "up") => {
     if (direction) return; // Prevent multiple clicks during animation
+    
+    // Record the decision
+    const actionMap: Record<"left" | "right" | "up", "skip" | "interested" | "dream-job"> = {
+      left: "skip",
+      right: "interested",
+      up: "dream-job"
+    };
+    
+    setDecisions(prev => [
+      ...prev,
+      {
+        jobId: mockJobs[currentIndex].id,
+        action: actionMap[dir],
+        timestamp: Date.now()
+      }
+    ]);
+
     setDirection(dir);
     
     setTimeout(() => {
@@ -25,15 +49,42 @@ export function SwipeStack() {
   const handleReset = () => {
     setCurrentIndex(0);
     setDirection(null);
+    setDecisions([]);
   };
 
   if (currentIndex >= mockJobs.length) {
+    const interestedCount = decisions.filter(d => d.action === "interested").length;
+    const skippedCount = decisions.filter(d => d.action === "skip").length;
+    const dreamJobCount = decisions.filter(d => d.action === "dream-job").length;
+    const totalDecisions = decisions.length;
+
     return (
-      <div className="flex flex-col items-center justify-center p-12 text-center border border-dashed rounded-xl border-border bg-secondary/10 w-full max-w-lg mx-auto h-[600px] animate-[fade-in_0.5s_ease-out]">
-        <h3 className="text-2xl font-bold mb-4">🎉 You&apos;ve viewed all available jobs.</h3>
-        <p className="text-muted-foreground max-w-md mb-8">
+      <div className="flex flex-col items-center justify-center p-8 text-center border border-dashed rounded-xl border-border bg-secondary/10 w-full max-w-lg mx-auto h-[600px] animate-[fade-in_0.5s_ease-out]">
+        <h3 className="text-2xl font-bold mb-2">🎉 You&apos;ve viewed all available jobs.</h3>
+        <p className="text-muted-foreground mb-8">
           Check back later for new opportunities.
         </p>
+
+        <div className="bg-background border border-border rounded-lg p-6 w-full max-w-xs mb-8 space-y-3 text-sm text-left shadow-sm">
+          <h4 className="font-semibold text-base mb-4 border-b border-border pb-2">Swipe Summary</h4>
+          <div className="flex justify-between items-center">
+            <span className="text-muted-foreground">Interested:</span>
+            <span className="font-medium">{interestedCount}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-muted-foreground">Skipped:</span>
+            <span className="font-medium">{skippedCount}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-muted-foreground">Dream Jobs:</span>
+            <span className="font-medium">{dreamJobCount}</span>
+          </div>
+          <div className="flex justify-between items-center pt-2 border-t border-border mt-2">
+            <span className="font-semibold text-foreground">Total Decisions:</span>
+            <span className="font-bold text-foreground">{totalDecisions}</span>
+          </div>
+        </div>
+
         <Button onClick={handleReset} size="lg" leftIcon={<RotateCcw className="w-4 h-4" />}>
           Start Again
         </Button>

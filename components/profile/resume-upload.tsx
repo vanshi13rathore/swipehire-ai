@@ -5,9 +5,49 @@ import { Card, CardContent } from "@/components/ui";
 import { Button } from "@/components/shared";
 import { useRouter } from "next/navigation";
 import { UploadCloud, FileText, Briefcase, GraduationCap, FileCheck } from "lucide-react";
+import { uploadResume } from "@/lib/supabase/storage";
+import { supabase } from "@/lib/supabase/client";
 
 export function ResumeUpload() {
   const router = useRouter();
+
+  const [isUploading, setIsUploading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [errorMsg, setErrorMsg] = React.useState("");
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      setErrorMsg("Please upload a PDF file.");
+      setSuccess(false);
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setErrorMsg("File size must be less than 5MB.");
+      setSuccess(false);
+      return;
+    }
+
+    setIsUploading(true);
+    setErrorMsg("");
+    setSuccess(false);
+
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error("User not authenticated.");
+
+      await uploadResume(file, user.id);
+      setSuccess(true);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Upload failed.");
+    } finally {
+      setIsUploading(false);
+      e.target.value = "";
+    }
+  };
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-12">
@@ -21,16 +61,31 @@ export function ResumeUpload() {
         
         <Card className="border-border/50 bg-card/60 backdrop-blur-md shadow-lg rounded-[2rem] overflow-hidden">
           <CardContent className="p-8 sm:p-12">
-            <div className="w-full rounded-3xl border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors flex flex-col items-center justify-center py-16 px-4 text-center cursor-pointer group">
-              <div className="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                <UploadCloud className="w-10 h-10" />
+            {errorMsg && (
+              <div className="mb-6 p-4 text-sm font-bold text-destructive bg-destructive/10 border border-destructive/20 rounded-xl">
+                {errorMsg}
               </div>
-              <h3 className="text-2xl font-bold tracking-tight mb-3 text-foreground">Drag & Drop your Resume</h3>
-              <p className="text-sm font-medium text-muted-foreground mb-8 tracking-wide">PDF or DOCX • Maximum 5 MB</p>
-              <Button variant="outline" size="lg" className="font-bold pointer-events-none shadow-sm">
-                Browse File
+            )}
+            {success && (
+              <div className="mb-6 p-4 text-sm font-bold text-primary bg-primary/10 border border-primary/20 rounded-xl">
+                Resume uploaded successfully!
+              </div>
+            )}
+            
+            <label className={`w-full rounded-3xl border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors flex flex-col items-center justify-center py-16 px-4 text-center cursor-pointer group ${isUploading ? 'opacity-50 pointer-events-none' : ''}`}>
+              <input type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} disabled={isUploading} />
+              
+              <div className="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                <UploadCloud className={`w-10 h-10 ${isUploading ? 'animate-bounce' : ''}`} />
+              </div>
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-foreground">
+                {isUploading ? "Uploading..." : "Drag & Drop your Resume"}
+              </h3>
+              <p className="text-sm font-medium text-muted-foreground mb-8 tracking-wide">PDF ONLY • Maximum 5 MB</p>
+              <Button variant="outline" size="lg" className="font-bold shadow-sm pointer-events-none">
+                {isUploading ? "Uploading..." : "Browse File"}
               </Button>
-            </div>
+            </label>
           </CardContent>
         </Card>
       </section>

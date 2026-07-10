@@ -4,9 +4,12 @@ import * as React from "react";
 import { Button } from "@/components/shared";
 import { Input, Card, CardContent, CardFooter } from "@/components/ui";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Mail, Lock, Globe, Code } from "lucide-react";
 
 export function LoginForm() {
+  const router = useRouter();
+
   return (
     <Card variant="elevated" className="w-full border-border/50 bg-card/60 backdrop-blur-md shadow-2xl p-2 sm:p-4 rounded-[2rem]">
       <CardContent className="space-y-5 pt-4">
@@ -40,7 +43,7 @@ export function LoginForm() {
           </Link>
         </div>
 
-        <Button size="lg" fullWidth className="mt-8 font-bold text-base shadow-lg shadow-primary/20">
+        <Button onClick={() => router.push("/profile")} size="lg" fullWidth className="mt-8 font-bold text-base shadow-lg shadow-primary/20">
           Login
         </Button>
 

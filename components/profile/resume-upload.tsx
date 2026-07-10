@@ -3,9 +3,12 @@
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui";
 import { Button } from "@/components/shared";
+import { useRouter } from "next/navigation";
 import { UploadCloud, FileText, Briefcase, GraduationCap, FileCheck } from "lucide-react";
 
 export function ResumeUpload() {
+  const router = useRouter();
+
   return (
     <div className="w-full max-w-3xl mx-auto space-y-12">
       
@@ -87,7 +90,7 @@ export function ResumeUpload() {
       </section>
 
       <div className="flex justify-center pt-8 pb-16">
-        <Button size="xl" className="w-full max-w-sm font-bold shadow-lg shadow-primary/20 text-base">
+        <Button onClick={() => router.push("/dev/job-feed")} size="xl" className="w-full max-w-sm font-bold shadow-lg shadow-primary/20 text-base">
           Continue
         </Button>
       </div>

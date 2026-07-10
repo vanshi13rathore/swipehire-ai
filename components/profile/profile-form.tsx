@@ -3,9 +3,12 @@
 import * as React from "react";
 import { Card, CardHeader, CardContent, Input } from "@/components/ui";
 import { Button } from "@/components/shared";
+import { useRouter } from "next/navigation";
 import { User, Mail, MapPin, Briefcase, Award, Building, DollarSign, Globe, ChevronDown } from "lucide-react";
 
 export function ProfileForm() {
+  const router = useRouter();
+
   return (
     <div className="w-full max-w-3xl mx-auto space-y-6">
       
@@ -126,7 +129,7 @@ export function ProfileForm() {
         <Button variant="outline" size="lg" className="w-full sm:w-auto font-bold shadow-sm">
           Save Profile
         </Button>
-        <Button size="lg" className="w-full sm:w-auto font-bold shadow-lg shadow-primary/20">
+        <Button onClick={() => router.push("/resume")} size="lg" className="w-full sm:w-auto font-bold shadow-lg shadow-primary/20">
           Continue
         </Button>
       </div>

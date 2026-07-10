@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { JobCard, type Job } from "./job-card";
 
 export interface JobFeedProps {
@@ -7,6 +8,8 @@ export interface JobFeedProps {
 }
 
 export function JobFeed({ jobs = [], loading = false }: JobFeedProps) {
+  const router = useRouter();
+
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
@@ -36,6 +39,9 @@ export function JobFeed({ jobs = [], loading = false }: JobFeedProps) {
           job={job} 
           matchPercentage={job.matchPercentage}
           featured={job.featured}
+          onClick={() => router.push(`/jobs/${job.id}`)}
+          onView={() => router.push(`/jobs/${job.id}`)}
+          className="cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all"
         />
       ))}
     </div>

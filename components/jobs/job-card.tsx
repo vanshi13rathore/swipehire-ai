@@ -113,7 +113,10 @@ export function JobCard({
             </div>
           </div>
           <button 
-            onClick={() => onSave?.(job.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSave?.(job.id);
+            }}
             className="text-muted-foreground hover:text-primary transition-colors shrink-0"
             aria-label={saved ? "Remove bookmark" : "Bookmark job"}
           >
@@ -169,7 +172,10 @@ export function JobCard({
             variant="outline" 
             size="sm" 
             className="w-full sm:w-auto"
-            onClick={() => onView?.(job.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onView?.(job.id);
+            }}
           >
             View Details
           </Button>
@@ -177,7 +183,10 @@ export function JobCard({
             variant={activeVariant === "saved" ? "secondary" : "primary"}
             size="sm" 
             className="w-full sm:w-auto"
-            onClick={() => onApply?.(job.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onApply?.(job.id);
+            }}
           >
             Apply Now
           </Button>

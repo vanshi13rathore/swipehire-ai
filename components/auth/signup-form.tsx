@@ -41,6 +41,23 @@ export function SignupForm() {
     }
   };
 
+  const handleOAuthLogin = async (provider: 'google' | 'github') => {
+    setIsLoading(true);
+    setErrorMsg("");
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        }
+      });
+      if (error) throw error;
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "An unexpected error occurred.");
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Card variant="elevated" className="w-full border-border/50 bg-card/60 backdrop-blur-md shadow-2xl p-2 sm:p-4 rounded-[2rem]">
       <CardContent className="space-y-5 pt-4">
@@ -109,10 +126,10 @@ export function SignupForm() {
         </div>
 
         <div className="grid grid-cols-1 gap-4">
-          <Button disabled={isLoading} variant="outline" type="button" fullWidth leftIcon={<Globe className="w-4 h-4" />} className="font-semibold shadow-sm hover:bg-secondary/50">
+          <Button onClick={() => handleOAuthLogin('google')} disabled={isLoading} variant="outline" type="button" fullWidth leftIcon={<Globe className="w-4 h-4" />} className="font-semibold shadow-sm hover:bg-secondary/50">
             Continue with Google
           </Button>
-          <Button disabled={isLoading} variant="outline" type="button" fullWidth leftIcon={<Code className="w-4 h-4" />} className="font-semibold shadow-sm hover:bg-secondary/50">
+          <Button onClick={() => handleOAuthLogin('github')} disabled={isLoading} variant="outline" type="button" fullWidth leftIcon={<Code className="w-4 h-4" />} className="font-semibold shadow-sm hover:bg-secondary/50">
             Continue with GitHub
           </Button>
         </div>

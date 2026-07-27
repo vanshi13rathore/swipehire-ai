@@ -12,7 +12,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Senior",
     skills: ["React", "TypeScript", "Next.js", "GraphQL"],
     postedAt: "2 hours ago",
-    matchPercentage: 98,
     featured: true,
   },
   {
@@ -26,7 +25,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Staff",
     skills: ["React", "Redux", "System Design", "Performance"],
     postedAt: "5 hours ago",
-    matchPercentage: 94,
   },
   {
     id: "job-003",
@@ -39,7 +37,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Mid-Level",
     skills: ["Next.js", "React", "Tailwind CSS"],
     postedAt: "1 day ago",
-    matchPercentage: 88,
   },
   {
     id: "job-004",
@@ -52,7 +49,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Mid-Level",
     skills: ["Figma", "React", "CSS Animation", "Accessibility"],
     postedAt: "2 days ago",
-    matchPercentage: 91,
   },
   {
     id: "job-005",
@@ -65,7 +61,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Lead",
     skills: ["React", "TypeScript", "PostgreSQL", "WebSockets"],
     postedAt: "3 days ago",
-    matchPercentage: 82,
   },
   {
     id: "job-006",
@@ -78,7 +73,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Senior",
     skills: ["React Native", "iOS", "Android", "Mobile Design"],
     postedAt: "4 days ago",
-    matchPercentage: 75,
   },
   {
     id: "job-007",
@@ -91,7 +85,6 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Principal",
     skills: ["React", "Micro-frontends", "Performance", "Video Streaming"],
     postedAt: "1 week ago",
-    matchPercentage: 96,
   },
   {
     id: "job-008",
@@ -104,6 +97,5 @@ export const mockJobs: (Job & { matchPercentage?: number; featured?: boolean })[
     experienceLevel: "Mid-Level",
     skills: ["React", "Node.js", "WebRTC", "Elixir"],
     postedAt: "1 week ago",
-    matchPercentage: 85,
   }
 ];

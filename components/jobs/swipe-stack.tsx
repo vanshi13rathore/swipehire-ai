@@ -3,56 +3,36 @@
 import * as React from "react";
 import { useState } from "react";
 import { JobCard } from "./job-card";
-import { mockJobs } from "./mock-jobs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/shared";
-import { X, Heart, Star, RotateCcw } from "lucide-react";
-
-interface Decision {
-  jobId: string;
-  action: "skip" | "interested" | "dream-job";
-  timestamp: number;
-}
+import { X, Heart, Star, RotateCcw, Loader2 } from "lucide-react";
+import { useSwipe } from "@/hooks/use-swipe";
 
 export function SwipeStack() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { currentJob, handleSwipe, handleReset, loading, decisions } = useSwipe();
   const [direction, setDirection] = useState<"left" | "right" | "up" | null>(null);
-  const [decisions, setDecisions] = useState<Decision[]>([]);
 
   const handleNext = (dir: "left" | "right" | "up") => {
-    if (direction) return; // Prevent multiple clicks during animation
+    if (direction || !currentJob) return; // Prevent multiple clicks
     
-    // Record the decision
-    const actionMap: Record<"left" | "right" | "up", "skip" | "interested" | "dream-job"> = {
-      left: "skip",
-      right: "interested",
-      up: "dream-job"
-    };
-    
-    setDecisions(prev => [
-      ...prev,
-      {
-        jobId: mockJobs[currentIndex].id,
-        action: actionMap[dir],
-        timestamp: Date.now()
-      }
-    ]);
-
     setDirection(dir);
     
     setTimeout(() => {
-      setCurrentIndex((prev) => prev + 1);
+      handleSwipe(dir);
       setDirection(null);
     }, 300);
   };
 
-  const handleReset = () => {
-    setCurrentIndex(0);
-    setDirection(null);
-    setDecisions([]);
-  };
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center p-8 text-center border border-dashed rounded-xl border-border bg-secondary/10 w-full max-w-lg mx-auto h-[600px]">
+        <Loader2 className="w-8 h-8 animate-spin text-primary mb-4" />
+        <p className="text-muted-foreground">Finding the best matches for you...</p>
+      </div>
+    );
+  }
 
-  if (currentIndex >= mockJobs.length) {
+  if (!currentJob) {
     const interestedCount = decisions.filter(d => d.action === "interested").length;
     const skippedCount = decisions.filter(d => d.action === "skip").length;
     const dreamJobCount = decisions.filter(d => d.action === "dream-job").length;
@@ -86,13 +66,11 @@ export function SwipeStack() {
         </div>
 
         <Button onClick={handleReset} size="lg" leftIcon={<RotateCcw className="w-4 h-4" />}>
-          Start Again
+          View Summary
         </Button>
       </div>
     );
   }
-
-  const currentJob = mockJobs[currentIndex];
 
   const getCardStyle = () => {
     if (direction === "left") return "-translate-x-[150%] rotate-[-15deg] opacity-0";
@@ -112,8 +90,6 @@ export function SwipeStack() {
       >
         <JobCard 
           job={currentJob} 
-          matchPercentage={currentJob.matchPercentage}
-          featured={currentJob.featured}
         />
       </div>
       

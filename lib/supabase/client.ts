@@ -1,14 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import { env } from "@/env.mjs";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
-
-if (!supabaseUrl) {
-  throw new Error("Missing env variable: NEXT_PUBLIC_SUPABASE_URL");
-}
-
-if (!supabaseAnonKey) {
-  throw new Error("Missing env variable: NEXT_PUBLIC_SUPABASE_ANON_KEY");
-}
+const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

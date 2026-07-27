@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -116,18 +118,6 @@ const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
 );
 CardFooter.displayName = "CardFooter";
 
-const CardImage = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
-  ({ className, alt, ...props }, ref) => (
-    <img
-      ref={ref}
-      className={cn("w-full h-auto object-cover", className)}
-      alt={alt || "Card image"}
-      {...props}
-    />
-  )
-);
-CardImage.displayName = "CardImage";
-
 const CardBadge = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     const { size } = React.useContext(CardContext);
@@ -151,6 +141,5 @@ export {
   CardDescription,
   CardContent,
   CardFooter,
-  CardImage,
   CardBadge
 };

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Card, CardHeader, CardContent, CardFooter, CardBadge } from "@/components/ui";
 import { Button } from "@/components/shared";
@@ -10,22 +10,10 @@ import {
   Globe, Zap 
 } from "lucide-react";
 
-export interface Job {
-  id: string;
-  title: string;
-  company: {
-    name: string;
-    logo?: string;
-    verified?: boolean;
-  };
-  location: string;
-  isRemote: boolean;
-  salary: string;
-  employmentType: string;
-  experienceLevel: string;
-  skills: string[];
-  postedAt: string;
-}
+import type { Job, MatchedJob } from "@/lib/ai/types";
+import Image from "next/image";
+
+export type { Job, MatchedJob };
 
 const jobCardVariants = cva("", {
   variants: {
@@ -42,14 +30,15 @@ const jobCardVariants = cva("", {
 });
 
 export interface JobCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  job?: Job;
+  job?: Job | MatchedJob;
   matchPercentage?: number;
   saved?: boolean;
+  applied?: boolean;
   featured?: boolean;
   loading?: boolean;
   variant?: "default" | "featured" | "compact" | "saved";
   onSave?: (id: string) => void;
-  onApply?: (id: string) => void;
+  onApply?: (jobId: string) => void;
   onView?: (id: string) => void;
 }
 
@@ -57,6 +46,7 @@ export function JobCard({
   job,
   matchPercentage,
   saved = false,
+  applied = false,
   featured = false,
   loading = false,
   variant = "default",
@@ -95,9 +85,9 @@ export function JobCard({
       <CardHeader className={cn("pb-4", featured ? "pt-12" : "pt-6")}>
         <div className="flex justify-between items-start gap-4">
           <div className="flex gap-4">
-            <div className="w-12 h-12 rounded-lg bg-secondary/50 border border-border flex items-center justify-center shrink-0 overflow-hidden">
+            <div className="w-12 h-12 rounded-lg bg-secondary/50 border border-border flex items-center justify-center shrink-0 overflow-hidden relative">
               {job.company.logo ? (
-                <img src={job.company.logo} alt={job.company.name} className="w-full h-full object-cover" />
+                <Image src={job.company.logo} alt={job.company.name} fill className="object-cover" />
               ) : (
                 <Building2 className="w-6 h-6 text-muted-foreground" />
               )}
@@ -180,15 +170,16 @@ export function JobCard({
             View Details
           </Button>
           <Button 
-            variant={activeVariant === "saved" ? "secondary" : "primary"}
+            variant={applied ? "outline" : (activeVariant === "saved" ? "secondary" : "primary")}
             size="sm" 
-            className="w-full sm:w-auto"
+            className={cn("w-full sm:w-auto", applied && "text-muted-foreground border-border")}
+            disabled={applied}
             onClick={(e) => {
               e.stopPropagation();
-              onApply?.(job.id);
+              if (!applied) onApply?.(job.id);
             }}
           >
-            Apply Now
+            {applied ? "Applied ✓" : "Apply Now"}
           </Button>
         </div>
       </CardFooter>

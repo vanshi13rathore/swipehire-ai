@@ -145,7 +145,7 @@ export function ResumeUpload() {
       </section>
 
       <div className="flex justify-center pt-8 pb-16">
-        <Button onClick={() => router.push("/dev/job-feed")} size="xl" className="w-full max-w-sm font-bold shadow-lg shadow-primary/20 text-base">
+        <Button onClick={() => router.push("/dashboard")} size="xl" className="w-full max-w-sm font-bold shadow-lg shadow-primary/20 text-base">
           Continue
         </Button>
       </div>

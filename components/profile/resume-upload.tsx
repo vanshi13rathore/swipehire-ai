@@ -78,8 +78,7 @@ export function ResumeUpload() {
       const errorText = err instanceof Error ? err.message : 
         (typeof err === "object" && err !== null && "error_description" in err ? String((err as { error_description: string }).error_description) : 
         (typeof err === 'string' ? err : JSON.stringify(err)));
-      setErrorMsg(`Error during ${uploadState}: ${errorText}`);
-      setUploadState("idle");
+      setErrorMsg(errorText);
       setUploadState("idle");
     } finally {
       e.target.value = "";

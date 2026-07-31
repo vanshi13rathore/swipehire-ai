@@ -1,4 +1,4 @@
-import { Navbar, Hero, Features, CTA, Footer } from "@/components/landing";
+import { Navbar, Hero, Features, CTA, Footer, SocialProof } from "@/components/landing";
 
 export default function LandingPage() {
   return (
@@ -6,6 +6,7 @@ export default function LandingPage() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <SocialProof />
         <Features />
         <CTA />
       </main>

@@ -6,9 +6,10 @@ import type { Application, ApplicationStatus } from "@/lib/supabase/types";
 import type { Job } from "@/lib/ai/types";
 import { Button } from "@/components/shared";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, RefreshCcw, Building2, Trash2, Calendar } from "lucide-react";
+import { AlertCircle, RefreshCcw, Building2, Trash2, Calendar, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 const statusColors: Record<ApplicationStatus, string> = {
   Applied: "bg-blue-500/10 text-blue-500 border-blue-500/20",
@@ -126,11 +127,17 @@ export default function ApplicationsPage() {
         </div>
 
         {applications.length === 0 ? (
-          <div className="flex flex-col items-center justify-center p-12 text-center border border-dashed rounded-xl border-border bg-secondary/10 w-full">
-            <h3 className="text-xl font-semibold mb-2">No applications yet</h3>
-            <p className="text-muted-foreground max-w-md">
-              Start applying to jobs to track your progress here.
+          <div className="flex flex-col items-center justify-center py-20 px-4 text-center border-2 border-dashed rounded-3xl border-border bg-secondary/5 max-w-3xl mx-auto mt-8 w-full">
+            <div className="w-20 h-20 rounded-full bg-secondary/30 flex items-center justify-center mb-6">
+              <Send className="w-10 h-10 text-muted-foreground ml-1" />
+            </div>
+            <h3 className="text-2xl font-black mb-3">No applications yet</h3>
+            <p className="text-muted-foreground max-w-md mb-8 text-lg">
+              Start applying to jobs to track your progress here. Let AI help you find the perfect match.
             </p>
+            <Link href="/jobs">
+               <Button size="xl" className="font-bold shadow-lg shadow-primary/20">Explore Jobs</Button>
+            </Link>
           </div>
         ) : (
           <div className="space-y-4">

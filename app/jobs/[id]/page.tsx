@@ -3,26 +3,30 @@
 import * as React from "react";
 import { JobDetails } from "@/components/jobs";
 import { supabase } from "@/lib/supabase/client";
-import { getResumeAnalysis } from "@/lib/ai/pipeline";
-import { matchResumeToJob } from "@/lib/ai/job-matcher";
-import { generateCareerChemistry, type CareerChemistryResult } from "@/lib/ai/career-chemistry";
-import { mockJobs } from "@/components/jobs/mock-jobs";
-import type { MatchedJob } from "@/lib/ai/types";
+import { getCareerChemistry } from "@/lib/actions/career-chemistry";
+import type { MatchedJob, Job } from "@/lib/ai/types";
+import { getJobs } from "@/lib/jobs/api";
+import type { CareerMatch } from "@/lib/supabase/types";
 
 export default function JobDetailsPage({ params }: { params: { id: string } }) {
-  const [chemistry, setChemistry] = React.useState<CareerChemistryResult | null>(null);
+  const [chemistry, setChemistry] = React.useState<CareerMatch | null>(null);
   const [matchedJob, setMatchedJob] = React.useState<MatchedJob | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [hasResume, setHasResume] = React.useState(true);
 
-  const job = mockJobs.find((j) => j.id === params.id) || mockJobs[0];
+  const [job, setJob] = React.useState<Job | null>(null);
 
   React.useEffect(() => {
-    async function loadChemistry() {
+    async function loadJobAndChemistry() {
       try {
         setLoading(true);
         setError(null);
+
+        // Fetch real jobs and find the one matching params.id
+        const allJobs = await getJobs();
+        const foundJob = allJobs.find(j => j.id === params.id) || allJobs[0];
+        setJob(foundJob);
         
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
@@ -30,73 +34,47 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
           return;
         }
 
-        const { data: files } = await supabase.storage
-          .from("resumes")
-          .list(user.id, { sortBy: { column: "created_at", order: "desc" } });
-
-        const latestResume = files?.find((f) => f.name.endsWith(".pdf"));
-        if (!latestResume) {
-          setHasResume(false);
-          return;
-        }
-
-        const { data: blob } = await supabase.storage
-          .from("resumes")
-          .download(`${user.id}/${latestResume.name}`);
-
-        if (!blob) {
-          setHasResume(false);
-          return;
-        }
-
-        const file = new File([blob], latestResume.name, { type: "application/pdf" });
+        const chemistryResult = await getCareerChemistry(foundJob.id);
         
-        const updatedTime = latestResume.updated_at 
-          ? new Date(latestResume.updated_at as string).getTime() 
-          : new Date(latestResume.created_at as string).getTime();
-
-        const analysis = await getResumeAnalysis({
-          file,
-          userId: user.id,
-          filename: latestResume.name,
-          updatedTime
-        });
+        setMatchedJob({
+          ...foundJob,
+          score: chemistryResult.overall_score,
+          matchedSkills: [],
+          missingSkills: chemistryResult.explanation?.missingRequirements || [],
+          reasons: chemistryResult.explanation?.matchReasoning || [],
+        } as MatchedJob);
         
-        const matchResult = matchResumeToJob(analysis, job);
-        const fullMatchedJob: MatchedJob = {
-          ...job,
-          score: matchResult.score,
-          matchedSkills: matchResult.matchedSkills,
-          missingSkills: matchResult.missingSkills,
-          reasons: matchResult.reasons,
-        };
-        
-        const chemistryResult = generateCareerChemistry(analysis, fullMatchedJob);
-        
-        setMatchedJob(fullMatchedJob);
-        setChemistry(chemistryResult);
+        setChemistry(chemistryResult as unknown as typeof chemistry);
         setHasResume(true);
       } catch (err) {
         console.error("Failed to load chemistry", err);
-        setError("Failed to analyze resume. Please try again later.");
+        if (err instanceof Error && err.message === "NO_RESUME") {
+           setHasResume(false);
+        } else {
+           setError("Failed to analyze resume. Please try again later.");
+        }
       } finally {
         setLoading(false);
       }
     }
 
-    loadChemistry();
-  }, [job]);
+    loadJobAndChemistry();
+  }, [params.id]);
 
   return (
     <div className="min-h-screen bg-background">
-      <JobDetails 
-        id={params.id} 
-        job={matchedJob || job}
-        chemistry={chemistry}
-        loading={loading}
-        error={error}
-        hasResume={hasResume}
-      />
+      {job ? (
+        <JobDetails 
+          id={params.id} 
+          job={matchedJob || job}
+          chemistry={chemistry}
+          loading={loading}
+          error={error}
+          hasResume={hasResume}
+        />
+      ) : (
+        <div className="flex items-center justify-center min-h-[50vh]">Loading job details...</div>
+      )}
     </div>
   );
 }

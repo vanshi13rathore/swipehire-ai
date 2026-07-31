@@ -48,8 +48,24 @@ export interface MatchedJob extends Job {
   reasons: string[];
 }
 
-export interface RecommendedJob extends MatchedJob {
+export interface RecommendedJob extends Job {
+  score: number;
+  matchedSkills: string[];
+  missingSkills: string[];
+  reasons: string[];
   recommendationScore: number;
+  recommendationReason: string;
+}
+
+export interface JobWithScores extends Job {
+  chemistryScore: number;
+  heuristicScores: {
+    overall_score: number;
+    skills_score: number;
+    experience_score: number;
+    education_score: number;
+    keyword_score: number;
+  } | null;
   recommendationReason: string;
 }
 

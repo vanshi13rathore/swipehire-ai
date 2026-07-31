@@ -41,19 +41,27 @@ export async function proxy(request: NextRequest) {
   const { supabaseResponse, user, supabase } = await updateSession(request);
 
   if (isProtectedRoute && !user) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    const redirectRes = NextResponse.redirect(new URL('/login', request.url));
+    supabaseResponse.cookies.getAll().forEach((c) => {
+      redirectRes.cookies.set(c.name, c.value, c);
+    });
+    return redirectRes;
   }
 
   // Missing Profile Guard
   if (user && isProtectedRoute && pathname !== '/profile') {
-    const { data: profile } = await supabase
+    const { data: profile, error } = await supabase
       .from('profiles')
       .select('is_complete')
       .eq('id', user.id)
       .single();
 
-    if (!profile?.is_complete) {
-      return NextResponse.redirect(new URL('/profile', request.url));
+    if (!error && profile && profile.is_complete === false) {
+      const redirectRes = NextResponse.redirect(new URL('/profile', request.url));
+      supabaseResponse.cookies.getAll().forEach((c) => {
+        redirectRes.cookies.set(c.name, c.value, c);
+      });
+      return redirectRes;
     }
   }
 

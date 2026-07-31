@@ -19,7 +19,7 @@ export function Header() {
       <div className="flex items-center gap-4">
         <Link href="/login" className="text-sm font-medium hidden sm:block">Log in</Link>
         <Link 
-          href="/register" 
+          href="/signup" 
           className={cn(
             buttonVariants({ variant: "default" }),
             "h-9 px-4 py-2 rounded-full shadow-lg shadow-primary/25"

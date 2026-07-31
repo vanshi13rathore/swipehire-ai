@@ -1,6 +1,6 @@
 import { extractTextFromPDF } from "./pdf";
 import { cleanResumeText } from "./clean";
-import { analyzeResume } from "./analyze";
+import { analyzeResumeAction } from "@/app/actions/analyze";
 import type { ResumeAnalysis, ResumeAnalysisRequest } from "./types";
 import { generateResumeInsights, type ResumeInsights } from "./insights";
 import { getCachedResumeAnalysis, saveResumeAnalysis as saveToMemoryCache } from "./cache";
@@ -28,7 +28,7 @@ export async function getResumeAnalysis(
   // 3. Fallback to Gemini
   const rawText = await extractTextFromPDF(request.file);
   const cleanedText = cleanResumeText(rawText);
-  const analysis = await analyzeResume(cleanedText);
+  const analysis = await analyzeResumeAction(cleanedText);
 
   // 4. Save to both cache layers
   await saveToPersistentStorage(userId, filename, updatedTime, analysis);

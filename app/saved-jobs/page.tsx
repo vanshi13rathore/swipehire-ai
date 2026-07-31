@@ -3,13 +3,14 @@
 import * as React from "react";
 import { JobFeed } from "@/components/jobs/job-feed";
 import { getSavedJobs } from "@/lib/supabase/saved-jobs";
-import type { Job } from "@/lib/ai/types";
-import { Button } from "@/components/ui/button";
+import type { Job, JobWithScores } from "@/lib/ai/types";
+import { Button } from "@/components/shared";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, RefreshCcw } from "lucide-react";
+import { AlertCircle, RefreshCcw, Bookmark } from "lucide-react";
+import Link from "next/link";
 
 export default function SavedJobsPage() {
-  const [savedJobs, setSavedJobs] = React.useState<Job[]>([]);
+  const [savedJobs, setSavedJobs] = React.useState<JobWithScores[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -19,7 +20,12 @@ export default function SavedJobsPage() {
       setError(null);
       
       const jobs = await getSavedJobs();
-      setSavedJobs(jobs);
+      setSavedJobs(jobs.map((job: Job): JobWithScores => ({
+        ...job,
+        chemistryScore: 0,
+        heuristicScores: null,
+        recommendationReason: "Saved by you",
+      })));
     } catch (err: unknown) {
       console.error("Failed to load saved jobs", err);
       if (err instanceof Error) {
@@ -71,8 +77,22 @@ export default function SavedJobsPage() {
             Your personal collection of bookmarked opportunities.
           </p>
         </div>
-        
-        <JobFeed jobs={savedJobs} loading={loading} />
+        {savedJobs.length === 0 && !loading ? (
+          <div className="flex flex-col items-center justify-center py-20 px-4 text-center border-2 border-dashed rounded-3xl border-border bg-secondary/5 max-w-3xl mx-auto mt-8">
+            <div className="w-20 h-20 rounded-full bg-secondary/30 flex items-center justify-center mb-6">
+              <Bookmark className="w-10 h-10 text-muted-foreground" />
+            </div>
+            <h3 className="text-2xl font-black mb-3">No saved jobs yet</h3>
+            <p className="text-muted-foreground max-w-md mb-8 text-lg">
+              You haven't bookmarked any opportunities. Browse the job feed and save jobs you're interested in to review them later.
+            </p>
+            <Link href="/jobs">
+               <Button size="xl" className="font-bold shadow-lg shadow-primary/20">Browse Jobs</Button>
+            </Link>
+          </div>
+        ) : (
+          <JobFeed jobs={savedJobs} loading={loading} />
+        )}
       </div>
     </main>
   );

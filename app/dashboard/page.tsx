@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { redirect } from "next/navigation";
-import { getResumeVersions } from "@/lib/supabase/resume-builder";
-import { getSavedJobs } from "@/lib/supabase/saved-jobs";
-import { getApplications } from "@/lib/supabase/applications";
-import { getInterviewSessions } from "@/lib/supabase/mock-interview";
-import { getCareerChats } from "@/lib/supabase/career-copilot";
-import { getCareerGoals } from "@/lib/supabase/analytics";
 import { generateDashboardInsights } from "@/lib/ai/analytics";
 import { DashboardView } from "@/components/dashboard/DashboardView";
 
@@ -19,22 +13,34 @@ export default async function DashboardPage() {
   let insights;
 
   try {
-    // Parallel fetching
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError || !user) throw new Error("Unauthorized");
+
+    // Parallel fetching directly from DB to avoid client-only helpers breaking on the server
     const [
-      resumes,
-      savedJobs,
-      applications,
-      interviews,
-      chats,
-      goals
+      { data: resumesData },
+      { data: savedJobsData },
+      { data: applicationsData },
+      { data: interviewsData },
+      { data: chatsData },
+      { data: goalsData }
     ] = await Promise.all([
-      getResumeVersions().catch(() => []),
-      getSavedJobs().catch(() => []),
-      getApplications().catch(() => []),
-      getInterviewSessions().catch(() => []),
-      getCareerChats().catch(() => []),
-      getCareerGoals().catch(() => [])
+      supabase.from("resume_versions").select("*").eq("user_id", user.id).order("created_at", { ascending: false }),
+      supabase.from("saved_jobs").select("*").eq("user_id", user.id),
+      supabase.from("applications").select("*").eq("user_id", user.id),
+      supabase.from("interview_sessions").select("*").eq("user_id", user.id),
+      supabase.from("career_copilot_chats").select("*").eq("user_id", user.id),
+      supabase.from("career_goals").select("*").eq("user_id", user.id)
     ]);
+
+    const resumes = resumesData || [];
+    const savedJobs = savedJobsData || [];
+    const applications = applicationsData || [];
+    const interviews = interviewsData || [];
+    const chats = chatsData || [];
+    const goals = goalsData || [];
 
     const defaultResume = resumes.find((r: any) => r.is_default) || resumes[0];
 

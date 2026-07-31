@@ -4,12 +4,12 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/shared";
-import { Card, CardHeader, CardContent } from "@/components/ui";
-import { MatchScore } from "@/components/ai";
-import { MapPin, DollarSign, Briefcase, Clock, Building, Bookmark, Sparkles, AlertCircle, CheckCircle2, XCircle, TrendingUp } from "lucide-react";
-import { mockJobs } from "./mock-jobs";
+import { Card } from "@/components/ui";
+import { MatchScore, CareerChemistry } from "@/components/ai";
+import { MapPin, DollarSign, Briefcase, Clock, Building, Bookmark, AlertCircle } from "lucide-react";
+
 import type { Job, MatchedJob } from "@/lib/ai/types";
-import type { CareerChemistryResult } from "@/lib/ai/career-chemistry";
+import type { CareerMatch } from "@/lib/supabase/types";
 import Image from "next/image";
 
 import { getAppliedJobIds, applyToJob, isApplied } from "@/lib/supabase/applications";
@@ -17,7 +17,7 @@ import { getAppliedJobIds, applyToJob, isApplied } from "@/lib/supabase/applicat
 export interface JobDetailsProps {
   id: string;
   job?: Job | MatchedJob;
-  chemistry?: CareerChemistryResult | null;
+  chemistry?: CareerMatch | null;
   loading?: boolean;
   error?: string | null;
   hasResume?: boolean;
@@ -32,7 +32,8 @@ export function JobDetails({
   hasResume = true 
 }: JobDetailsProps) {
   const router = useRouter();
-  const job = propJob || mockJobs.find(j => j.id === id) || mockJobs[0];
+  if (!propJob) return null;
+  const job = propJob;
   const score = 'score' in job ? (job as MatchedJob).score : 0;
   
   const [applied, setApplied] = React.useState(false);
@@ -176,7 +177,11 @@ export function JobDetails({
                 {loading ? (
                   <div className="w-32 h-32 rounded-full bg-secondary animate-pulse" />
                 ) : (
-                  <MatchScore score={score} className="w-32 h-32 border-[3px]" />
+                  <MatchScore 
+                    score={'recommendationScore' in job ? (job as unknown as { recommendationScore: number }).recommendationScore : ('score' in job ? (job as MatchedJob).score : null)} 
+                    hasResume={hasResume}
+                    className="w-32 h-32 border-[3px]" 
+                  />
                 )}
               </div>
               <div className="space-y-4">
@@ -196,95 +201,51 @@ export function JobDetails({
               </div>
             </Card>
 
-            <Card className="w-full max-w-lg mx-auto border-primary/20 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-primary/10 to-transparent -z-10 blur-xl" />
-
-              <CardHeader className="text-center pb-8 border-b border-border/50">
-                <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <Sparkles className="w-6 h-6 text-primary" />
+            {loading ? (
+              <Card className="w-full max-w-lg mx-auto border-primary/20 shadow-lg p-6 space-y-4">
+                <div className="flex flex-col items-center justify-center space-y-3 pb-4">
+                  <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin" />
+                  <p className="text-sm font-medium text-muted-foreground">Calculating Career Chemistry...</p>
                 </div>
-                <h2 className="text-2xl font-black tracking-tight mb-1 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-                  Career Chemistry™
-                </h2>
-                <p className="text-muted-foreground text-sm">Why this job matches you</p>
-              </CardHeader>
-              
-              <CardContent className="pt-8 min-h-[300px]">
-                {loading ? (
-                  <div className="space-y-4">
-                    <div className="h-6 w-3/4 bg-secondary animate-pulse rounded-md mx-auto" />
-                    <div className="h-20 w-full bg-secondary animate-pulse rounded-xl" />
-                    <div className="h-20 w-full bg-secondary animate-pulse rounded-xl" />
-                    <div className="h-20 w-full bg-secondary animate-pulse rounded-xl" />
+                <div className="h-20 w-full bg-secondary animate-pulse rounded-xl" />
+                <div className="h-20 w-full bg-secondary animate-pulse rounded-xl" />
+              </Card>
+            ) : !hasResume ? (
+              <Card className="w-full max-w-lg mx-auto border-primary/20 shadow-lg p-8">
+                <div className="flex flex-col items-center justify-center text-center space-y-4 py-4">
+                  <div className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center">
+                    <AlertCircle className="w-6 h-6 text-muted-foreground" />
                   </div>
-                ) : !hasResume ? (
-                  <div className="flex flex-col items-center justify-center text-center space-y-4 h-full py-8">
-                    <div className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center">
-                      <AlertCircle className="w-6 h-6 text-muted-foreground" />
-                    </div>
-                    <p className="text-muted-foreground font-medium">Upload your resume to unlock AI Career Chemistry.</p>
-                    <Button onClick={() => router.push("/dashboard")} variant="outline" size="sm">
-                      Go to Resume Upload
-                    </Button>
+                  <p className="text-muted-foreground font-medium">Upload your resume to unlock AI Career Chemistry.</p>
+                  <Button onClick={() => router.push("/resume")} variant="outline" size="sm">
+                    Go to Resume Upload
+                  </Button>
+                </div>
+              </Card>
+            ) : error ? (
+              <Card className="w-full max-w-lg mx-auto border-primary/20 shadow-lg p-8">
+                <div className="flex flex-col items-center justify-center text-center space-y-4 py-4">
+                  <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
+                    <AlertCircle className="w-6 h-6 text-destructive" />
                   </div>
-                ) : error ? (
-                  <div className="flex flex-col items-center justify-center text-center space-y-4 h-full py-8">
-                    <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-                      <AlertCircle className="w-6 h-6 text-destructive" />
-                    </div>
-                    <p className="text-destructive font-medium">{error}</p>
-                    <Button onClick={() => window.location.reload()} variant="outline" size="sm">
-                      Try Again
-                    </Button>
-                  </div>
-                ) : chemistry ? (
-                  <div className="space-y-6">
-                    <div className="text-center pb-4 border-b border-border/50">
-                      <p className="font-semibold text-foreground">{chemistry.overall}</p>
-                    </div>
-
-                    {chemistry.strengths.length > 0 && (
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-success" /> Strengths
-                        </h4>
-                        <ul className="space-y-1.5 pl-6">
-                          {chemistry.strengths.map((s, i) => (
-                            <li key={i} className="text-sm text-foreground/90 list-disc">{s}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {chemistry.weaknesses.length > 0 && (
-                      <div className="space-y-2 pt-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                          <XCircle className="w-4 h-4 text-destructive" /> Weaknesses
-                        </h4>
-                        <ul className="space-y-1.5 pl-6">
-                          {chemistry.weaknesses.map((w, i) => (
-                            <li key={i} className="text-sm text-foreground/90 list-disc">{w}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {chemistry.careerAdvice.length > 0 && (
-                      <div className="space-y-2 pt-2">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                          <TrendingUp className="w-4 h-4 text-primary" /> Career Advice
-                        </h4>
-                        <ul className="space-y-1.5 pl-6">
-                          {chemistry.careerAdvice.map((a, i) => (
-                            <li key={i} className="text-sm text-foreground/90 list-disc">{a}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ) : null}
-              </CardContent>
-            </Card>
+                  <p className="text-destructive font-medium">{error}</p>
+                  <Button onClick={() => window.location.reload()} variant="outline" size="sm">
+                    Try Again
+                  </Button>
+                </div>
+              </Card>
+            ) : (
+              <CareerChemistry 
+                score={chemistry ? chemistry.overall_score : 0}
+                skillsScore={chemistry ? chemistry.skills_score : 0}
+                experienceScore={chemistry ? chemistry.experience_score : 0}
+                educationScore={chemistry ? chemistry.education_score : 0}
+                keywordScore={chemistry ? chemistry.keyword_score : 0}
+                missingSkills={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return missingRequirements; })()}
+                matchReasoning={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return matchReasoning; })()}
+                improvementPlan={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return improvementPlan; })()}
+              />
+            )}
           </div>
         </div>
         

@@ -8,10 +8,15 @@ import { UploadCloud, FileText, Briefcase, GraduationCap, FileCheck } from "luci
 import { uploadResume } from "@/lib/supabase/storage";
 import { supabase } from "@/lib/supabase/client";
 
+import { extractTextFromPDF } from "@/lib/ai/pdf";
+import { analyzeResumeText } from "@/lib/ai/resume-analyzer";
+import { createResume } from "@/lib/supabase/resume-builder";
+import { revalidateMatches } from "@/lib/actions/revalidate";
+
 export function ResumeUpload() {
   const router = useRouter();
 
-  const [isUploading, setIsUploading] = React.useState(false);
+  const [uploadState, setUploadState] = React.useState<"idle" | "uploading" | "extracting" | "analyzing" | "saving" | "redirecting">("idle");
   const [success, setSuccess] = React.useState(false);
   const [errorMsg, setErrorMsg] = React.useState("");
 
@@ -31,7 +36,7 @@ export function ResumeUpload() {
       return;
     }
 
-    setIsUploading(true);
+    setUploadState("uploading");
     setErrorMsg("");
     setSuccess(false);
 
@@ -39,12 +44,39 @@ export function ResumeUpload() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("User not authenticated.");
 
+      // 1. Upload file to Storage
+      setUploadState("uploading");
       await uploadResume(file, user.id);
+      
+      // 2. Extract text locally in browser
+      setUploadState("extracting");
+      const text = await extractTextFromPDF(file);
+      
+      // 3. Run AI Analysis on Server
+      setUploadState("analyzing");
+      const resumeData = await analyzeResumeText(text);
+      
+      // 4. Save structured result to Database
+      setUploadState("saving");
+      const newResume = await createResume(file.name, resumeData, true);
+      
+      // 5. Invalidate matching cache
+      await revalidateMatches();
+      
       setSuccess(true);
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Upload failed.");
+      setUploadState("redirecting");
+      
+      // 6. Redirect to new beautiful analysis page
+      router.push(`/resume/analysis/${newResume.id}`);
+    } catch (err: unknown) {
+      console.error("Upload process error:", err);
+      // Supabase errors are often plain objects with a message property, not Error instances
+      const errorText = (err instanceof Error ? err.message : null) 
+        ?? (typeof err === "object" && err !== null && "error_description" in err ? String((err as { error_description: string }).error_description) : null)
+        ?? (typeof err === 'string' ? err : "Upload failed due to an unknown error.");
+      setErrorMsg(`Error: ${errorText}`);
+      setUploadState("idle");
     } finally {
-      setIsUploading(false);
       e.target.value = "";
     }
   };
@@ -68,22 +100,27 @@ export function ResumeUpload() {
             )}
             {success && (
               <div className="mb-6 p-4 text-sm font-bold text-primary bg-primary/10 border border-primary/20 rounded-xl">
-                Resume uploaded successfully!
+                Resume analyzed successfully! Redirecting...
               </div>
             )}
             
-            <label className={`w-full rounded-3xl border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors flex flex-col items-center justify-center py-16 px-4 text-center cursor-pointer group ${isUploading ? 'opacity-50 pointer-events-none' : ''}`}>
-              <input type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} disabled={isUploading} />
+            <label className={`w-full rounded-3xl border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors flex flex-col items-center justify-center py-16 px-4 text-center cursor-pointer group ${uploadState !== "idle" ? 'opacity-50 pointer-events-none' : ''}`}>
+              <input type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} disabled={uploadState !== "idle"} />
               
               <div className="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                <UploadCloud className={`w-10 h-10 ${isUploading ? 'animate-bounce' : ''}`} />
+                <UploadCloud className={`w-10 h-10 ${uploadState !== "idle" ? 'animate-bounce' : ''}`} />
               </div>
               <h3 className="text-2xl font-bold tracking-tight mb-3 text-foreground">
-                {isUploading ? "Uploading..." : "Drag & Drop your Resume"}
+                {uploadState === "idle" && "Drag & Drop your Resume"}
+                {uploadState === "uploading" && "Uploading document..."}
+                {uploadState === "extracting" && "Extracting text..."}
+                {uploadState === "analyzing" && "Analyzing Career DNA..."}
+                {uploadState === "saving" && "Saving profile..."}
+                {uploadState === "redirecting" && "Complete! Redirecting..."}
               </h3>
               <p className="text-sm font-medium text-muted-foreground mb-8 tracking-wide">PDF ONLY • Maximum 5 MB</p>
               <Button variant="outline" size="lg" className="font-bold shadow-sm pointer-events-none">
-                {isUploading ? "Uploading..." : "Browse File"}
+                {uploadState !== "idle" ? "Processing..." : "Browse File"}
               </Button>
             </label>
           </CardContent>

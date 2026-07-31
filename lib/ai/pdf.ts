@@ -2,7 +2,7 @@ import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
 
 // Configure the worker dynamically via CDN to ensure compatibility with Next.js in the browser
 if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
 }
 
 export async function extractTextFromPDF(file: File): Promise<string> {

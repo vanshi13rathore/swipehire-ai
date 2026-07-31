@@ -123,11 +123,6 @@ export function ProfileForm() {
   return (
     <div className="w-full max-w-3xl mx-auto space-y-6">
       
-      {errorMsg && (
-        <div className="p-4 bg-destructive/10 border border-destructive/20 text-destructive rounded-xl text-sm font-medium">
-          {errorMsg}
-        </div>
-      )}
 
       {/* 1. Personal Information */}
       <Card className="border-border/50 bg-card/60 backdrop-blur-md shadow-lg rounded-2xl">
@@ -263,6 +258,12 @@ export function ProfileForm() {
           </div>
         </CardContent>
       </Card>
+
+      {errorMsg && (
+        <div className="p-4 bg-destructive/10 border border-destructive/20 text-destructive rounded-xl text-sm font-medium">
+          {errorMsg}
+        </div>
+      )}
 
       <div className="flex flex-col sm:flex-row gap-4 justify-end pt-4 pb-12">
         <Button 

@@ -34,21 +34,9 @@ export interface Resume {
   createdAt: string;
 }
 
-export interface Job {
-  id: string;
-  title: string;
-  companyId: string;
-  location: string;
-  isRemote: boolean;
-  salary: string;
-  employmentType: string;
-  experienceLevel: string;
-  skillsRequired: string[];
-  description: string;
-  responsibilities: string[];
-  requirements: string[];
-  postedAt: string;
-}
+// Job type is the single source of truth from the AI types module.
+// The real job objects (from the Job API) use company as an object with name/logo.
+export type { Job } from "@/lib/ai/types";
 
 
 export interface ResumeAnalysisRecord {
@@ -192,6 +180,17 @@ export interface ResumeData {
     name: string;
     url: string;
   }>;
+  ai_analysis?: {
+    atsScore: number;
+    extractedSkills: string[];
+    missingSkills: string[];
+    summary: string;
+    strengths: string[];
+    weaknesses: string[];
+    grammarAnalysis: string;
+    keywordOptimization: string[];
+    actionableSuggestions: string[];
+  };
 }
 
 export interface CareerGoal {
@@ -212,4 +211,44 @@ export interface DashboardShare {
   token: string;
   is_active: boolean;
   created_at: string;
+}
+
+export interface CareerMatch {
+  id: string;
+  user_id: string;
+  resume_version_id: string;
+  job_id: string;
+  overall_score: number;
+  skills_score: number;
+  experience_score: number;
+  education_score: number;
+  keyword_score: number;
+  explanation?: {
+    matchReasoning: string[];
+    missingRequirements: string[];
+    improvementPlan: string[];
+  };
+  recommendations?: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SmartRecommendation {
+  id: string;
+  user_id: string;
+  job_id: string;
+  score: number;
+  explanation: {
+    matchReasoning: string[];
+    missingRequirements: string[];
+    improvementPlan: string[];
+    estimatedLearningTime: string;
+    dynamicRoadmap: {
+      timeframe: string;
+      action: string;
+    }[];
+    insight?: string;
+  };
+  generated_at: string;
+  expires_at: string;
 }

@@ -32,6 +32,7 @@ const jobCardVariants = cva("", {
 export interface JobCardProps extends React.HTMLAttributes<HTMLDivElement> {
   job?: Job | MatchedJob;
   matchPercentage?: number;
+  hasResume?: boolean;
   saved?: boolean;
   applied?: boolean;
   featured?: boolean;
@@ -45,6 +46,7 @@ export interface JobCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function JobCard({
   job,
   matchPercentage,
+  hasResume = true,
   saved = false,
   applied = false,
   featured = false,
@@ -78,7 +80,7 @@ export function JobCard({
 
       {matchPercentage !== undefined && (
         <div className="absolute top-4 right-4 z-10 transform scale-50 sm:scale-[0.6] origin-top-right pointer-events-none">
-          <MatchScore score={matchPercentage} />
+          <MatchScore score={matchPercentage} hasResume={hasResume} />
         </div>
       )}
 
@@ -138,23 +140,31 @@ export function JobCard({
         {!isCompact && (
           <div className="flex flex-wrap gap-2 pt-2">
             {job.isRemote && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
                 <Globe className="w-3 h-3" /> Remote
               </span>
             )}
-            {job.skills.map(skill => (
-              <span key={skill} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-border bg-background text-muted-foreground">
+            {job.skills.slice(0, 3).map(skill => (
+              <span key={skill} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-border bg-secondary/30 text-secondary-foreground hover:bg-secondary/50 transition-colors">
                 {skill}
               </span>
             ))}
+            {job.skills.length > 3 && (
+              <span 
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-muted-foreground cursor-help"
+                title={job.skills.slice(3).join(', ')}
+              >
+                +{job.skills.length - 3} more
+              </span>
+            )}
           </div>
         )}
       </CardContent>
 
-      <CardFooter className="flex items-center justify-between gap-4 pt-4 border-t border-border/50 bg-secondary/10 mt-auto">
+      <CardFooter className="flex items-center justify-between gap-4 pt-4 border-t border-border/50 bg-secondary/5 mt-auto">
         {!isCompact && (
           <span className="text-xs text-muted-foreground font-medium hidden sm:inline-block">
-            Posted {job.postedAt}
+            Posted {job.postedAt ? new Date(job.postedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : 'Recently'}
           </span>
         )}
         <div className={cn("flex items-center gap-2 w-full", !isCompact && "sm:w-auto sm:ml-auto")}>

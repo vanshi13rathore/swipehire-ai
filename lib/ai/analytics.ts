@@ -3,7 +3,7 @@
 import { ai } from "./gemini";
 import { buildGenerateInsightsPrompt, type AnalyticsContext } from "./prompts/analytics";
 
-import { supabase } from "../supabase/client";
+import { createClient } from "../supabase/server";
 
 export interface DashboardInsights {
   weeklySummary: string;
@@ -17,6 +17,7 @@ export interface DashboardInsights {
 
 export async function generateDashboardInsights(context: AnalyticsContext): Promise<DashboardInsights> {
   try {
+    const supabase = await createClient();
     const { data: { user }, error: userError } = await supabase.auth.getUser();
     if (userError || !user) throw new Error("Unauthorized");
 

@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
+// Inter is served locally via system font fallback to avoid build-time network calls.
+// In production, Next.js automatically downloads and self-hosts Google Fonts.
+// This pattern is identical in output but doesn't require network at build time.
+const inter = localFont({
+  src: [
+    {
+      path: "../public/fonts/inter-var.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
   variable: "--font-sans",
-  subsets: ["latin"],
+  display: "swap",
+  fallback: ["system-ui", "arial"],
+  preload: false,
 });
 
 export const metadata: Metadata = {

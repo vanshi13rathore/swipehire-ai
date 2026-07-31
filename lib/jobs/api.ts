@@ -1,5 +1,6 @@
 import type { Job } from "@/lib/ai/types";
-import type { RemotiveJob } from "./types";
+import type { RemotiveJob, RemotiveResponse } from "./types";
+import { env } from "@/env.mjs";
 
 export function getExperienceLevel(title: string): string {
   const t = (title || "").toLowerCase();
@@ -72,5 +73,39 @@ export async function getJobs(): Promise<Job[]> {
     console.error("Error fetching jobs from internal API:", error);
     // Wrap network failures with descriptive application errors
     throw new Error("Unable to connect to the job market. Please try again later.");
+  }
+}
+
+export async function getJobsServer(): Promise<Job[]> {
+  const url = env.JOBS_API_URL;
+  if (!url) {
+    throw new Error("Missing JOBS_API_URL environment variable.");
+  }
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      next: { revalidate: 3600 }
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`External API error: ${response.status}`);
+    }
+
+    const data: RemotiveResponse = await response.json();
+
+    if (!data.jobs || !Array.isArray(data.jobs)) {
+      return [];
+    }
+
+    return data.jobs.map(normalizeJob);
+  } catch (error: unknown) {
+    clearTimeout(timeoutId);
+    throw new Error("Failed to fetch jobs from external provider");
   }
 }

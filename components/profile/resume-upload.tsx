@@ -54,7 +54,12 @@ export function ResumeUpload() {
       
       // 3. Run AI Analysis on Server
       setUploadState("analyzing");
-      const resumeData = await analyzeResumeText(text);
+      const analyzeResult = await analyzeResumeText(text);
+      
+      if (!analyzeResult.success) {
+        throw new Error(analyzeResult.error);
+      }
+      const resumeData = analyzeResult.data;
       
       // 4. Save structured result to Database
       setUploadState("saving");

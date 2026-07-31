@@ -3,7 +3,11 @@
 import { ai } from "./gemini";
 import type { ResumeData } from "../supabase/types";
 
-export async function analyzeResumeText(text: string): Promise<ResumeData> {
+export type AnalyzeResumeResponse = 
+  | { success: true; data: ResumeData }
+  | { success: false; error: string };
+
+export async function analyzeResumeText(text: string): Promise<AnalyzeResumeResponse> {
   const prompt = `
 You are an expert ATS (Applicant Tracking System) parser and an elite Technical Recruiter. 
 I am going to provide you with the raw extracted text from a candidate's resume.
@@ -90,15 +94,27 @@ ${text}
     });
 
     let responseText = response.text;
-    if (!responseText) throw new Error("Empty response from AI");
+    if (!responseText) {
+      return { success: false, error: "Empty response from AI" };
+    }
     
     // Strip possible markdown code blocks if the model ignored the mime type
     responseText = responseText.replace(/```json/gi, '').replace(/```/g, '').trim();
 
     const resumeData = JSON.parse(responseText) as ResumeData;
-    return resumeData;
-  } catch (error) {
+    return { success: true, data: resumeData };
+  } catch (error: unknown) {
     console.error("Error analyzing resume:", error);
-    throw new Error("Failed to analyze resume text. Please try again.");
+    let errorMessage = "Failed to analyze resume text. Please try again.";
+    
+    if (error instanceof Error) {
+      if (error.message.includes("429") || error.message.includes("quota") || error.message.includes("RESOURCE_EXHAUSTED")) {
+        errorMessage = "AI processing quota exceeded. Please try again later or check your API keys.";
+      } else {
+        errorMessage = error.message;
+      }
+    }
+    
+    return { success: false, error: errorMessage };
   }
 }

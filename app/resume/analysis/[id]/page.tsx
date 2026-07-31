@@ -8,7 +8,8 @@ export const metadata = {
   description: "View your AI-powered resume analysis.",
 };
 
-export default async function ResumeAnalysisPage({ params }: { params: { id: string } }) {
+export default async function ResumeAnalysisPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
   const supabase = await createClient();
   const { data: { user }, error: userError } = await supabase.auth.getUser();
 
@@ -19,7 +20,7 @@ export default async function ResumeAnalysisPage({ params }: { params: { id: str
   const { data: resume, error } = await supabase
     .from("resume_versions")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", resolvedParams.id)
     .eq("user_id", user.id)
     .single();
 

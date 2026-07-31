@@ -111,10 +111,6 @@ Do not include any markdown formatting or code blocks. Just the raw JSON string.
     return parsed;
   } catch (error) {
     console.error("Error generating AI explanation:", error);
-    return {
-      matchReasoning: ["Unable to generate reasoning at this time."],
-      missingRequirements: [],
-      improvementPlan: ["Focus on the skills listed in the job description."],
-    };
+    throw new Error(`AI Generation Error: Failed to generate career chemistry explanation. ${error instanceof Error ? error.message : "Unknown error"}`);
   }
 }

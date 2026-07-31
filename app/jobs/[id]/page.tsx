@@ -8,7 +8,8 @@ import type { MatchedJob, Job } from "@/lib/ai/types";
 import { getJobs } from "@/lib/jobs/api";
 import type { CareerMatch } from "@/lib/supabase/types";
 
-export default function JobDetailsPage({ params }: { params: { id: string } }) {
+export default function JobDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params);
   const [chemistry, setChemistry] = React.useState<CareerMatch | null>(null);
   const [matchedJob, setMatchedJob] = React.useState<MatchedJob | null>(null);
   const [loading, setLoading] = React.useState(true);
@@ -23,9 +24,9 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
         setLoading(true);
         setError(null);
 
-        // Fetch real jobs and find the one matching params.id
+        // Fetch real jobs and find the one matching id
         const allJobs = await getJobs();
-        const foundJob = allJobs.find(j => j.id === params.id) || allJobs[0];
+        const foundJob = allJobs.find(j => j.id === id) || allJobs[0];
         setJob(foundJob);
         
         const { data: { user } } = await supabase.auth.getUser();
@@ -48,10 +49,11 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
         setHasResume(true);
       } catch (err) {
         console.error("Failed to load chemistry", err);
-        if (err instanceof Error && err.message === "NO_RESUME") {
+        const errorMsg = err instanceof Error ? err.message : "Failed to analyze resume.";
+        if (errorMsg.includes("Missing Requirement")) {
            setHasResume(false);
         } else {
-           setError("Failed to analyze resume. Please try again later.");
+           setError(errorMsg);
         }
       } finally {
         setLoading(false);
@@ -59,13 +61,13 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
     }
 
     loadJobAndChemistry();
-  }, [params.id]);
+  }, [id]);
 
   return (
     <div className="min-h-screen bg-background">
       {job ? (
         <JobDetails 
-          id={params.id} 
+          id={id} 
           job={matchedJob || job}
           chemistry={chemistry}
           loading={loading}

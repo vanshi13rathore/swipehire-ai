@@ -30,8 +30,11 @@ export async function getCareerChemistry(jobId: string): Promise<CareerMatch> {
     .limit(1)
     .single();
 
-  if (resumeError || !resumeVersion) {
-    throw new Error("NO_RESUME");
+  if (resumeError) {
+    throw new Error(`Database Error: Failed to fetch resume: ${resumeError.message}`);
+  }
+  if (!resumeVersion) {
+    throw new Error("Missing Requirement: You must upload a resume to calculate Career Chemistry.");
   }
 
   const resume = resumeVersion as ResumeVersion;

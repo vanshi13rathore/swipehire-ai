@@ -84,7 +84,7 @@ export default function SavedJobsPage() {
             </div>
             <h3 className="text-2xl font-black mb-3">No saved jobs yet</h3>
             <p className="text-muted-foreground max-w-md mb-8 text-lg">
-              You haven't bookmarked any opportunities. Browse the job feed and save jobs you're interested in to review them later.
+              You haven&apos;t bookmarked any opportunities. Browse the job feed and save jobs you&apos;re interested in to review them later.
             </p>
             <Link href="/jobs">
                <Button size="xl" className="font-bold shadow-lg shadow-primary/20">Browse Jobs</Button>

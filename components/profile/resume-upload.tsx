@@ -69,12 +69,12 @@ export function ResumeUpload() {
       // 6. Redirect to new beautiful analysis page
       router.push(`/resume/analysis/${newResume.id}`);
     } catch (err: unknown) {
-      console.error("Upload process error:", err);
-      // Supabase errors are often plain objects with a message property, not Error instances
-      const errorText = (err instanceof Error ? err.message : null) 
-        ?? (typeof err === "object" && err !== null && "error_description" in err ? String((err as { error_description: string }).error_description) : null)
-        ?? (typeof err === 'string' ? err : "Upload failed due to an unknown error.");
-      setErrorMsg(`Error: ${errorText}`);
+      console.error("Upload process error at state:", uploadState, err);
+      const errorText = err instanceof Error ? err.message : 
+        (typeof err === "object" && err !== null && "error_description" in err ? String((err as { error_description: string }).error_description) : 
+        (typeof err === 'string' ? err : JSON.stringify(err)));
+      setErrorMsg(`Error during ${uploadState}: ${errorText}`);
+      setUploadState("idle");
       setUploadState("idle");
     } finally {
       e.target.value = "";

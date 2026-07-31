@@ -6,15 +6,16 @@ import { Button } from "@/components/shared";
 import { Trophy, ArrowLeft, Target, Lightbulb, AlertTriangle, BookOpen, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function InterviewResultPage({ params }: { params: { id: string } }) {
+export default async function InterviewResultPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
+  const { id } = await params;
   const { data: session } = await supabase
     .from("interview_sessions")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (!session || !session.feedback) {

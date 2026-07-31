@@ -17,7 +17,7 @@ export async function initializeInterview(sessionId: string): Promise<InterviewQ
     .eq("id", sessionId)
     .single();
 
-  if (!session) throw new Error("Session not found");
+  if (!session) throw new Error("Database Error: Interview session not found in database.");
   if (session.questions && session.questions.length > 0) return session.questions;
 
   // Fetch user's default resume for context
@@ -29,7 +29,10 @@ export async function initializeInterview(sessionId: string): Promise<InterviewQ
     .limit(1)
     .single();
 
-  const resumeText = resumeVersion ? JSON.stringify(resumeVersion.resume_data) : "No resume provided.";
+  if (!resumeVersion || !resumeVersion.resume_data) {
+    throw new Error("Missing Requirement: You must upload a resume before starting a mock interview.");
+  }
+  const resumeText = JSON.stringify(resumeVersion.resume_data);
 
   // Generate Questions via Gemini
   const prompt = `
@@ -71,15 +74,23 @@ export async function initializeInterview(sessionId: string): Promise<InterviewQ
 
   const object = JSON.parse(response.text || "{}");
   const questions = object.questions || [];
+  
+  if (questions.length === 0) {
+    throw new Error("AI Generation Error: Gemini failed to generate interview questions. Please try again.");
+  }
 
   // Save to DB
-  await supabase
+  const { error: updateError } = await supabase
     .from("interview_sessions")
     .update({ 
       questions,
       status: "In Progress"
     })
     .eq("id", sessionId);
+
+  if (updateError) {
+    throw new Error(`Database Error: Failed to save questions: ${updateError.message}`);
+  }
 
   return questions;
 }

@@ -31,12 +31,8 @@ export function JobDetails({
   error = null, 
   hasResume = true 
 }: JobDetailsProps) {
-  const router = useRouter();
-  if (!propJob) return null;
-  const job = propJob;
-  const score = 'score' in job ? (job as MatchedJob).score : 0;
-  
   const [applied, setApplied] = React.useState(false);
+  const router = useRouter();
 
   React.useEffect(() => {
     async function checkApplied() {
@@ -64,6 +60,9 @@ export function JobDetails({
       setApplied(false);
     }
   };
+
+  if (!propJob) return null;
+  const job = propJob;
 
   return (
     <div className="container mx-auto px-4 py-8 lg:py-12 max-w-6xl">
@@ -241,9 +240,9 @@ export function JobDetails({
                 experienceScore={chemistry ? chemistry.experience_score : 0}
                 educationScore={chemistry ? chemistry.education_score : 0}
                 keywordScore={chemistry ? chemistry.keyword_score : 0}
-                missingSkills={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return missingRequirements; })()}
-                matchReasoning={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return matchReasoning; })()}
-                improvementPlan={(() => { const { matchReasoning = [], missingRequirements = [], improvementPlan = [] } = chemistry?.explanation || {}; return improvementPlan; })()}
+                missingSkills={chemistry?.explanation?.missingRequirements || []}
+                matchReasoning={chemistry?.explanation?.matchReasoning || []}
+                improvementPlan={chemistry?.explanation?.improvementPlan || []}
               />
             )}
           </div>

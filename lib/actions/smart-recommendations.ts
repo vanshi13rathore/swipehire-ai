@@ -39,7 +39,7 @@ export async function getOrGenerateSmartRecommendation(job: Job): Promise<SmartR
     .single();
 
   if (!resumeVersion || !resumeVersion.resume_data) {
-    return null; // Cannot generate without resume
+    throw new Error("Missing Requirement: You must upload a resume to generate smart recommendations.");
   }
 
   const resumeData = resumeVersion.resume_data as unknown as ResumeData;

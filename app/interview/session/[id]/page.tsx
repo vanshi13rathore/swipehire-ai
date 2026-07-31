@@ -8,7 +8,8 @@ import { BrainCircuit, Mic, Loader2, Send, Clock } from "lucide-react";
 import { initializeInterview, submitInterviewAnswers } from "@/lib/actions/mock-interview";
 import type { InterviewQuestion } from "@/lib/supabase/types";
 
-export default function InterviewSessionPage({ params }: { params: { id: string } }) {
+export default function InterviewSessionPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params);
   const router = useRouter();
   const [questions, setQuestions] = useState<InterviewQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,17 +23,17 @@ export default function InterviewSessionPage({ params }: { params: { id: string 
   useEffect(() => {
     async function loadQuestions() {
       try {
-        const q = await initializeInterview(params.id);
+        const q = await initializeInterview(id);
         setQuestions(q);
-      } catch (err) {
+      } catch (err: unknown) {
         console.error(err);
-        setError("Failed to initialize interview. Please try again.");
+        setError(err instanceof Error ? err.message : "Failed to initialize interview.");
       } finally {
         setIsLoading(false);
       }
     }
     loadQuestions();
-  }, [params.id]);
+  }, [id]);
 
   const handleNext = async () => {
     const currentQ = questions[currentIndex];
@@ -46,8 +47,8 @@ export default function InterviewSessionPage({ params }: { params: { id: string 
       // Finished
       setIsSubmitting(true);
       try {
-        await submitInterviewAnswers(params.id, newAnswers);
-        router.push(`/interview/result/${params.id}`);
+        await submitInterviewAnswers(id, newAnswers);
+        router.push(`/interview/result/${id}`);
       } catch (err) {
         console.error(err);
         setError("Failed to submit answers.");

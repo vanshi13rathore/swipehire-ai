@@ -12,7 +12,7 @@ interface Props {
   data: {
     applications: Application[];
     interviews: InterviewSession[];
-    savedJobs: any[];
+    savedJobs: unknown[];
   };
 }
 
@@ -64,7 +64,7 @@ export const DashboardCharts = React.memo(function DashboardCharts({ data }: Pro
       interviewsScheduled: interviews,
       interviewRate: `${interviewRate}%`
     };
-  }, [data.applications]);
+  }, [data.applications, data.savedJobs?.length]);
 
   // Pipeline Data
   const pipelineData = useMemo(() => {

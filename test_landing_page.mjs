@@ -1,3 +1,4 @@
+/* eslint-disable */
 import puppeteer from 'puppeteer';
 import path from 'path';
 import { fileURLToPath } from 'url';

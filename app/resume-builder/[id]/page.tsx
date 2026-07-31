@@ -10,7 +10,8 @@ import { Editor } from "@/components/resume-builder/Editor";
 import { LivePreview } from "@/components/resume-builder/LivePreview";
 import { useDebounce } from "@/lib/hooks/use-debounce";
 
-export default function ResumeBuilderEditor({ params }: { params: { id: string } }) {
+export default function ResumeBuilderEditor({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params);
   const router = useRouter();
   const [resume, setResume] = React.useState<ResumeVersion | null>(null);
   const [loading, setLoading] = React.useState(true);
@@ -24,7 +25,7 @@ export default function ResumeBuilderEditor({ params }: { params: { id: string }
   React.useEffect(() => {
     async function load() {
       try {
-        const data = await getResume(params.id);
+        const data = await getResume(id);
         setResume(data);
         setLocalData(data.resume_data);
       } catch (err: unknown) {
@@ -38,7 +39,7 @@ export default function ResumeBuilderEditor({ params }: { params: { id: string }
       }
     }
     load();
-  }, [params.id]);
+  }, [id]);
 
   // Debounced Auto Save
   React.useEffect(() => {
@@ -50,7 +51,7 @@ export default function ResumeBuilderEditor({ params }: { params: { id: string }
     async function save() {
       try {
         setSaveStatus("saving");
-        const updated = await updateResume(params.id, { resume_data: debouncedData! });
+        const updated = await updateResume(id, { resume_data: debouncedData! });
         setResume(updated);
         setSaveStatus("saved");
         
@@ -65,7 +66,7 @@ export default function ResumeBuilderEditor({ params }: { params: { id: string }
     }
 
     save();
-  }, [debouncedData, params.id, resume]);
+  }, [debouncedData, id, resume]);
 
   if (loading) {
     return (
@@ -88,7 +89,7 @@ export default function ResumeBuilderEditor({ params }: { params: { id: string }
     const newTitle = e.target.value;
     setResume(prev => prev ? { ...prev, title: newTitle } : null);
     try {
-      await updateResume(params.id, { title: newTitle });
+      await updateResume(id, { title: newTitle });
     } catch (err) {
       console.error("Failed to update title", err);
     }

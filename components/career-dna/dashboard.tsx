@@ -17,6 +17,7 @@ import {
   Star
 } from "lucide-react";
 import type { ResumeData } from "@/lib/supabase/types";
+import Link from "next/link";
 
 export function CareerDNADashboard({ resumeData }: { resumeData: ResumeData }) {
   const { ai_analysis, skills, experience } = resumeData;
@@ -126,10 +127,14 @@ export function CareerDNADashboard({ resumeData }: { resumeData: ResumeData }) {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Badge variant="secondary" className="px-3 py-1.5 text-sm bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20 border border-indigo-500/20 transition-colors">
-                    {skill}
-                  </Badge>
+                  <Link href="/jobs">
+                    <Badge variant="secondary" className="px-3 py-1.5 text-sm bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/30 hover:text-indigo-200 border border-indigo-500/20 transition-all cursor-pointer">
+                      {skill}
+                    </Badge>
+                  </Link>
                 </motion.div>
               ))}
               {extractedSkills.length === 0 && (

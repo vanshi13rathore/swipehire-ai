@@ -1,6 +1,6 @@
 import { Navbar, Footer } from "@/components/landing";
 import { CareerDNADashboard } from "@/components/career-dna/dashboard";
-import { getResumeVersions } from "@/lib/supabase/resume-builder";
+
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -22,8 +22,17 @@ export default async function CareerDNAPage() {
 
   let latestResume = null;
   try {
-    const resumes = await getResumeVersions();
-    latestResume = resumes.find(r => r.is_default) || resumes[0];
+    const { data: resumes, error } = await supabase
+      .from("resume_versions")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false });
+      
+    if (error) throw error;
+    
+    if (resumes && resumes.length > 0) {
+      latestResume = resumes.find((r: any) => r.is_default) || resumes[0];
+    }
   } catch (error) {
     console.error("Failed to fetch resumes for Career DNA", error);
   }

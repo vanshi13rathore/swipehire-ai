@@ -1,0 +1,1606 @@
+[
+  {
+    "id": 0,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Big Data', 'Hadoop', 'Hive', 'Python', 'Mapreduce', 'Spark', 'Java', 'Machine Learning', 'Cloud', 'Hdfs', 'YARN', 'Core Java', 'Data Science', 'C++', 'Data Structures', 'DBMS', 'RDBMS', 'Informatica', 'Talend', 'Amazon Redshift', 'Microsoft Azure']",
+      "education": "['The Amity School of Engineering & Technology (ASET), Noida']",
+      "experience": "['Big Data Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 399.4178330000001,
+      "end_to_end_ms": 399.42058299999997
+    }
+  },
+  {
+    "id": 1,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['budgeting', 'CAD', 'construction management', 'engineer', 'film', 'hiring', 'inspection', 'laser', 'machinery', 'managing', 'mechanical', 'negotiations', 'processes', 'process improvement', 'project management', 'quality', 'simulation', 'SPC', 'strategy', 'supervision', 'system administrator', 'Paper converting equipment', 'Facility and plant modifications', 'DMF and Project Work Process', 'Written and verbal communication skills', 'AutoCAD', 'Excel']",
+      "education": "['University of Idaho - School of Engineering']",
+      "experience": "['Engineering Manager', 'Manager - Maintenance and Reliability', 'Supervisor Reliability Engineer', 'Process & Tooling Engineer', 'Converting Plant Engineer', 'Senior Converting Analyst', 'Development Designer, Mechanical Engineer, Senior Mechanical Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 550.1400829999993,
+      "end_to_end_ms": 550.1702080000005
+    }
+  },
+  {
+    "id": 2,
+    "status": "Failed",
+    "dataset_match_score": "0.6933333333333334",
+    "ground_truth": {
+      "skills": "['accounting', 'balance sheet', 'budgets', 'client', 'clients', 'derivatives', 'drafting', 'equity', 'financial', 'financial accounting', 'financial statements', 'fixed assets', 'Funds', 'Government', 'Information Technology', 'inventory', 'investments', 'ledger', 'MA', 'Microsoft Excel', 'natural', 'page', 'payables', 'processes', 'programming', 'Real Estate', 'research', 'sales', 'scheme', 'telephone', 'writing skills']",
+      "education": "['EMORY UNIVERSITY, Goizueta Business School']",
+      "experience": "['Senior Accountant', 'Associate Fund Controller', 'Advisory, Forensic and Audit Associate', 'Accounting Tutor']",
+      "certifications": "[['accounting'], ['fraud detection']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 275.02241700000013,
+      "end_to_end_ms": 275.0258750000012
+    }
+  },
+  {
+    "id": 3,
+    "status": "Failed",
+    "dataset_match_score": "0.5499999999999999",
+    "ground_truth": {
+      "skills": "['account reconciliations', 'accounting', 'accounts payable', 'Accounts Receivable', 'AP', 'Balance sheet', 'Bank Reconciliation', 'Banking', 'Billing', 'book', 'Com', 'Client', 'edit', 'Finance', 'Financials', 'financial reports', 'Preparing financial reports', 'focus', 'functional', 'General Ledger', 'GL', 'Inventory control', 'process invoices', 'Invoice Processing', 'invoicing', 'MBA', 'mail', 'office', 'Developer', 'profit and loss statement', 'coding', 'reporting', 'researching', 'SAP FI', 'SAP']",
+      "education": "['N/A', 'N/A', 'N/A']",
+      "experience": "['Accountant', 'Consultant', 'N/A']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 477.9700419999972,
+      "end_to_end_ms": 477.97399999999834
+    }
+  },
+  {
+    "id": 4,
+    "status": "Failed",
+    "dataset_match_score": "0.7933333333333333",
+    "ground_truth": {
+      "skills": "['Problem resolution', 'Results-oriented', 'Meticulous attention to detail', 'Managing multiple priorities', 'Active Learning', 'Client Relations', 'Computer Proficiency', 'Creative Problem Solving', 'Critical Thinking', 'Data Collection', 'Data Entry', 'Documentation', 'Email', 'Executive Management Support', 'Filing', 'Internet Research', 'Letters and Memos', 'Minute Taking', 'Multi-Task Management', 'Organizational Skills', 'Research', 'Scheduling', 'Service Orientation', 'Speaking', 'Spreadsheets', 'Travel Arrangements']",
+      "education": "['Denver High School', 'Front Range Community College']",
+      "experience": "['Business Development', 'Service Manager', 'System Technology Specialist', 'Project Manager', 'Support Manager', 'Project Administrator']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 240.95633400000224,
+      "end_to_end_ms": 240.95899999999892
+    }
+  },
+  {
+    "id": 5,
+    "status": "Failed",
+    "dataset_match_score": "0.5766666666666667",
+    "ground_truth": {
+      "skills": "['Marketing', 'Sales', 'Budgets', 'Promotional', 'And Marketing', 'Sales And', 'Aviation', 'Class', 'Comprehensive Large Array Data Stewardship System', 'Excellent Multitasker', 'Simultaneous', 'Teaching', 'Training', 'Accounts And', 'Advertising', 'Branding', 'Community Outreach', 'From Sales', 'Its', 'Managed Sales', 'Of Sales', 'Public Relations', 'Increase', 'Administrative Support', 'Audit', 'Budgeting', 'Cost Control', 'Executive Assistant', 'For Selling', 'Ordering', 'Relationship Management', 'Scheduling', 'Selling And', 'Accountable For', 'Business Development', 'Clients', 'Forecasting', 'Implemented Sales', 'Key Accounts', 'Maintenance', 'Market Trends', 'Networking', 'Sale And', 'Sales Forecasting', 'Sales Objectives', 'Sales Strategies', 'Strategic Planning', 'The Sale', 'The Sales', 'Direct Marketing', 'Marketing Plan', 'Overall Sales', 'Project Development', 'Sales Plan', 'Energetic', 'Fundraising', 'Highly Organized', 'Mac', 'Quicken', 'San', 'Self Motivated', 'Storage Area Network', 'Very Organized', 'Finance', 'Shipping']",
+      "education": "['CITY UNIVERSITY BUSINESS SCHOOL', 'THE UNIVERSITY OF HULL']",
+      "experience": "['Business Development Manager', 'Sales and Marketing Manager', 'VP Sales and Marketing', 'Executive Assistant']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 243.41383300000234,
+      "end_to_end_ms": 243.4174579999999
+    }
+  },
+  {
+    "id": 6,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Agile coach', 'Product owner', 'Team lead', 'Scrum master', 'Web application development', 'UI design', 'Relational database design', 'ASP', 'C#', 'VB.NET', 'SOAP', 'REST', 'JQuery', 'Bootstrap', 'CSS', 'HTML5', 'MSSQL', 'MYSQL', 'DTS', 'SSIS', 'SSRS', 'IIS 5', 'IIS 6', 'Agile', 'Scrum', 'Kanban', 'Objective C', 'PHP', 'Perl']",
+      "education": "['Milwaukee Area Technical College', 'MRA']",
+      "experience": "['Engineering Team Lead', 'Software Engineer', 'Web Developer', 'Jr. Software Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 837.2292919999963,
+      "end_to_end_ms": 837.2324169999993
+    }
+  },
+  {
+    "id": 7,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Artificial Intelligence', 'Python', 'Predictive Analytics', 'Statistical Modeling', 'Data Visualization', 'Data Analysis', 'Data Mining', 'Data Validation', 'Power Bi', 'Text Analytics', 'Data Modeling', 'Data Analyst']",
+      "education": "['Gujarat University', 'Vellore Institute of Technology']",
+      "experience": "['Data Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 284.3506249999991,
+      "end_to_end_ms": 284.35333399999945
+    }
+  },
+  {
+    "id": 8,
+    "status": "Failed",
+    "dataset_match_score": "0.383333333",
+    "ground_truth": {
+      "skills": "['Data Analysis', 'Data Analytics', 'Business Analysis', 'R', 'SAS', 'PowerBi', 'Tableau', 'Data Visualization', 'Business Analytics', 'Machine Learning']",
+      "education": "['Delhi University - Hansraj College', 'Delhi University - Hansraj College']",
+      "experience": "['Business Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 270.2587080000012,
+      "end_to_end_ms": 270.26087499999994
+    }
+  },
+  {
+    "id": 9,
+    "status": "Failed",
+    "dataset_match_score": "0.826666667",
+    "ground_truth": {
+      "skills": "['Data Analysis', 'Data Visualization', 'Deep Learning', 'Machine Learning', 'Adobe Analytics', 'Excel', 'Matplotlib', 'Python']",
+      "education": "['Maulana Abul University']",
+      "experience": "['Analyst Support']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 799.0436250000057,
+      "end_to_end_ms": 799.0475000000006
+    }
+  },
+  {
+    "id": 10,
+    "status": "Failed",
+    "dataset_match_score": "0.583333333",
+    "ground_truth": {
+      "skills": "['Python', 'Java', 'Visual Basic', 'Windows', 'Linux', 'HTML', 'CSS', 'Javascript', 'PHP', 'SQL', 'NodeJS', 'App development (Android and iOS)', 'User centered design', 'Algorithms and data structures', 'Basic processor design', 'Electronic circuit analysis']",
+      "education": "['University of York', 'Egerton Grammar School']",
+      "experience": "['Student Ambassador', 'Tutor', 'Sales Assistant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 616.7659589999967,
+      "end_to_end_ms": 616.7693329999965
+    }
+  },
+  {
+    "id": 11,
+    "status": "Failed",
+    "dataset_match_score": "0.736666667",
+    "ground_truth": {
+      "skills": "['Data Analyst', 'Data Analytics', 'Data Analysis', 'Time Series Analysis', 'Business Analytics', 'Predictive Modeling', 'Regression Analysis', 'Image Processing', 'Data Visualization', 'Linear Regression', 'Statistical Analysis', 'Requirement Analysis', 'SQL', 'Tableau', 'Python']",
+      "education": "['Sikkim Manipal university']",
+      "experience": "['Deputy Data Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 255.06387499999983,
+      "end_to_end_ms": 255.06779200000165
+    }
+  },
+  {
+    "id": 12,
+    "status": "Failed",
+    "dataset_match_score": "0.183333333",
+    "ground_truth": {
+      "skills": "['JavaScript (Angular)', 'HTML/CSS', 'Python (Django)', 'SQL (MySQL, PostgreSQL)', 'Git', 'Ruby on Rails']",
+      "education": "['New York University']",
+      "experience": "['Computer Science Tutor']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 242.10291699999652,
+      "end_to_end_ms": 242.10645799999475
+    }
+  },
+  {
+    "id": 13,
+    "status": "Failed",
+    "dataset_match_score": "0.75",
+    "ground_truth": {
+      "skills": "['Microsoft Excel expert - Pivot Tables, V-Lookups, Formulas', 'Access Database Queries & data mining', 'Proficient in Microsoft Office, MS Word, Outlook, PowerPoint', 'PeopleSoft use & knowledge - Queries & data mining', 'Oracle experience', 'SharePoint use experience', 'InfoLease for Lease and Financial Accounting & CITConnect Research', 'Internet Accounting, Finance and Tax Research - Lexis-Nexis, CCH & RIA Tax Research', 'STAT- FSI Track', 'Ultra Tax', 'IMAGE Scanner Asset Manager -10-key; Printers & Scanners; general office tools', 'QuickBooks']",
+      "education": "['University of North Florida', 'N/A', 'N/A']",
+      "experience": "['Senior Accountant', 'Corporate Tax Analyst', 'Staff Accountant', 'Financial Advisor']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 325.21687499999825,
+      "end_to_end_ms": 325.2192500000092
+    }
+  },
+  {
+    "id": 14,
+    "status": "Failed",
+    "dataset_match_score": "0.75",
+    "ground_truth": {
+      "skills": "['Project coordination', 'Forward-thinking mindset', 'Microsoft Office proficiency', 'Business writing', 'Results-oriented', 'Self-directed', 'Strong interpersonal skills', 'Organized and detail-oriented', 'Accounting', 'Accounting Systems', 'AIA', 'AS400', 'Billings', 'Bluebeam', 'Bonds', 'Budgets', 'Business Management', 'Clerical', 'Construction Management', 'Contracts', 'Special Events', 'Filing', 'Imaging', 'Insurance', 'JD Edwards', 'Microsoft', 'Office', 'Negotiations', 'Payroll', 'Coding', 'Project Management', 'Property Management', 'Proposals', 'RFI', 'SAP', 'Scheduling', 'Taxes', 'Trade Shows']",
+      "education": "['USM', 'NVCC']",
+      "experience": "['Project Accountant', 'Assistant to Vice President', 'Owner', 'Assistant Project Manager', 'Project Manager', 'Project Coordinator', 'Executive Assistant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 246.95333299999766,
+      "end_to_end_ms": 246.9552079999994
+    }
+  },
+  {
+    "id": 15,
+    "status": "Failed",
+    "dataset_match_score": "0.35",
+    "ground_truth": {
+      "skills": "['Data Science', 'Analysis', 'Machine Learning', 'Bounding Algorithms', 'Heuristics', 'ANN', 'Decision Trees', 'SVM', 'Hypothesis Analysis', 'Optimization']",
+      "education": "['St Josephs College of Arts and Science Bengaluru', 'St Josephs College of Arts and Science Bengaluru']",
+      "experience": "['Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 256.1477500000037,
+      "end_to_end_ms": 256.15166699999827
+    }
+  },
+  {
+    "id": 16,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['audio', 'automation', 'C', 'C++', 'CD-ROMs', 'Ceridian', 'cisco', 'Hardware', 'cost reduction', 'clients', 'drivers', 'executive management', 'Functional', 'inspection', 'Intel', 'Java', 'Linux', 'MAC', 'Managing', 'marketing and sales', 'C#', 'Windows', 'Windows XP', 'multimedia', 'Objective C', 'OS', 'policies', 'printers', 'processes', 'product development', 'quality', 'quality assurance', 'quest', 'sales', 'scanners', 'Scheduling', 'scrum', 'scripts', 'software development', 'software testing', 'sound cards', 'sun', 'test tools', 'USB', 'validation', 'video', 'Vista']",
+      "education": "['Webster University', 'Kabul University']",
+      "experience": "['Engineering Manager', 'Director of Quality Assurance', 'Director of Quality Assurance', 'Quality Assurance Manager', 'Lead Test Engineer', 'Lead Test Engineer', 'Owner / President']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 259.8451250000071,
+      "end_to_end_ms": 259.84779099999287
+    }
+  },
+  {
+    "id": 17,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['assisted living', 'interpersonal and communication', 'insurance', 'internal medicine', 'managing', 'marketing', 'marketing/sales', 'meetings', 'mentor', 'office', 'networking', 'organizing', 'orthopedics', 'outside sales', 'physical therapy', 'rehabilitation', 'sales', 'seminars', 'Team player', 'time management']",
+      "education": "['ARIZONA STATE UNIVERSITY']",
+      "experience": "['Business Development Manager', 'Marketing/Outside Physician Rep', 'Marketing Director', 'Resident Liaison']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 328.37174999999115,
+      "end_to_end_ms": 328.3729999999923
+    }
+  },
+  {
+    "id": 18,
+    "status": "Failed",
+    "dataset_match_score": "0.916666667",
+    "ground_truth": {
+      "skills": "['Game Theory', 'Bounded Rationality', 'Cryptography', 'Algorithms', 'Social Networks', 'Analysis of Algorithms', 'Combinatorial Optimizations']",
+      "education": "['Cornell University, Department of Computer Science', 'Tel Aviv University, Israel']",
+      "experience": "['Summer Intern', 'Summer Intern', 'FW Developer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 643.6420409999992,
+      "end_to_end_ms": 643.6443749999889
+    }
+  },
+  {
+    "id": 19,
+    "status": "Failed",
+    "dataset_match_score": "0.316666667",
+    "ground_truth": {
+      "skills": "['Software Development', 'Data Science', 'Data Analysis', 'Data Structure', 'Business Analytics', 'Artificial Intelligence', 'Machine Learning', 'Software Engineering', 'Java', 'Powerbi', 'Tableau', 'SQL', 'DBMS', 'Deep learning']",
+      "education": "['HEM College, Indore']",
+      "experience": "['Intern at Machine Learning and cognitive division']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 579.7153340000077,
+      "end_to_end_ms": 579.7171660000022
+    }
+  },
+  {
+    "id": 20,
+    "status": "Failed",
+    "dataset_match_score": "0.316666667",
+    "ground_truth": {
+      "skills": "['Data Modeling', 'Requirement Gathering', 'Machine Learning', 'Data Science', 'Python', 'C++', 'C', 'Java']",
+      "education": "['Symbiosis University']",
+      "experience": "['N/A']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 595.111041000011,
+      "end_to_end_ms": 595.1122080000059
+    }
+  },
+  {
+    "id": 21,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Python', 'Webscrapping', 'PowerBI', 'Data Cleaning', 'Data Preparation', 'Data Analysis', 'Predictive Modeling', 'Data Analytics', 'Pivot Table', 'SQL', 'PostgreSQL', 'Analytics', 'Excel', 'Machine Learning', 'XML']",
+      "education": "['Mumbai University']",
+      "experience": "['Junior Analyst']",
+      "certifications": "[['R', 'Python', 'PowerBI']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 257.33483399999386,
+      "end_to_end_ms": 257.3367500000022
+    }
+  },
+  {
+    "id": 22,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['JavaScript', 'Visual Studio Code', 'Git', 'TensorFlow', 'Selenium (automated testing)', 'Docker']",
+      "education": "['Dartmouth College', 'Dartmouth College']",
+      "experience": "['Technical Support', 'Office Assistant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 254.0245419999992,
+      "end_to_end_ms": 254.02583300000697
+    }
+  },
+  {
+    "id": 23,
+    "status": "Failed",
+    "dataset_match_score": "0.5",
+    "ground_truth": {
+      "skills": "['FAS Asset Accounting', 'Quickbooks', 'Anytime Scheduler', 'KRONOS', 'Munis', 'MAS90', 'Excel', 'Word', 'Outlook', 'Internet Explorer', 'FRX', 'Netscape Messenger', 'JD Edwards', 'Accounting', 'Accounts payable', 'Accounts Receivable', 'accruals', 'acquisitions', 'billing', 'closing', 'Consulting', 'contracts', 'Controller', 'credit', 'Customer Support', 'financials', 'financial statements', 'fixed assets', 'general ledger', 'Human Resource', 'insurance', 'Internet Explorer', 'JD Edwards', 'Job costing', 'KRONOS', 'Lotus', 'marketing', 'MAS90', 'Excel', 'Outlook Express', 'Windows', 'Word', 'Netscape', 'Payroll', 'personnel', 'Quickbooks']",
+      "education": "['Keller Graduate School of Management', 'DeVry University', 'Army National Guard']",
+      "experience": "['Payroll Accountant', 'Accountant', 'Staff Accountant', 'Staff Accountant', 'Accounts Receivable Administrator', 'Contracts Processor']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 296.34141599999566,
+      "end_to_end_ms": 296.34358300000895
+    }
+  },
+  {
+    "id": 24,
+    "status": "Failed",
+    "dataset_match_score": "0.56",
+    "ground_truth": {
+      "skills": "['Business Analyst', 'Data Analytics', 'Data Cleansing', 'Business Analysis', 'Risk Analysis', 'Statistical Analysis', 'Deep Learning', 'Machine Learning', 'Python', 'Numpy']",
+      "education": "['PGG College Mysore']",
+      "experience": "['SDE and Business Analyst Trainee']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 267.6451669999951,
+      "end_to_end_ms": 267.6462080000056
+    }
+  },
+  {
+    "id": 25,
+    "status": "Failed",
+    "dataset_match_score": "0.35",
+    "ground_truth": {
+      "skills": "['Software Engineer', 'Data Analyst', 'Machine Learning', 'Text Analytics', 'Software Development', 'Object Oriented Programming', 'Pandas', 'Numpy', 'Java', 'Python', 'SpringBoot', 'Laravel']",
+      "education": "['Dr. Jagjiban Rao Engineering College']",
+      "experience": "['Software Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 952.6089589999756,
+      "end_to_end_ms": 952.6117080000113
+    }
+  },
+  {
+    "id": 26,
+    "status": "Failed",
+    "dataset_match_score": "0.8266666666666667",
+    "ground_truth": {
+      "skills": "['account reconciliations', 'accounting', 'accounts payable', 'Accounts Receivable', 'AP', 'Balance sheet', 'Bank Reconciliation', 'Banking', 'Billing', 'book', 'Com', 'Client', 'edit', 'Finance', 'Financials', 'financial reports', 'Preparing financial reports', 'focus', 'functional', 'General Ledger', 'GL', 'Inventory control', 'process invoices', 'Invoice Processing', 'invoicing', 'MBA', 'mail', 'office', 'Developer', 'profit and loss statement', 'coding', 'reporting', 'researching', 'SAP FI', 'SAP']",
+      "education": "['N/A', 'N/A', 'N/A']",
+      "experience": "['Accountant', 'Consultant', 'N/A']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 603.970834000007,
+      "end_to_end_ms": 603.9733750000014
+    }
+  },
+  {
+    "id": 27,
+    "status": "Failed",
+    "dataset_match_score": "0.503333333",
+    "ground_truth": {
+      "skills": "['Data Analytics', 'Natural Language Processing', 'Production Engineering', 'Production Analytics', 'Tableau', 'Machine Learning', 'Python', 'NLTK']",
+      "education": "['SMV Institute of Technology']",
+      "experience": "['Assistant Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 253.07333299997845,
+      "end_to_end_ms": 253.07562499999767
+    }
+  },
+  {
+    "id": 28,
+    "status": "Failed",
+    "dataset_match_score": "0.453333333",
+    "ground_truth": {
+      "skills": "['Python', 'Data Analytics', 'Machine Learning', 'Artificial Intelligence', 'Natural Language Processing', 'Deep Learning', 'Data Analysis', 'Business Analytics', 'SQL', 'Linux', 'Scala']",
+      "education": "['AMITY UNIVERSITY, NOIDA']",
+      "experience": "['INTERN', 'SOFTWARE DEVELOPER INTERN']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 235.53350000001956,
+      "end_to_end_ms": 235.53470899999957
+    }
+  },
+  {
+    "id": 29,
+    "status": "Failed",
+    "dataset_match_score": "0.35",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Data processing', 'Data visualization', 'Deep Learning', 'SQL', 'Python Programming', 'PyCharm', 'Django']",
+      "education": "['Heramba Chandra College']",
+      "experience": "['Python Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 557.5229580000159,
+      "end_to_end_ms": 557.5247920000111
+    }
+  },
+  {
+    "id": 30,
+    "status": "Failed",
+    "dataset_match_score": "0.76",
+    "ground_truth": {
+      "skills": "['C#', 'ASP.NET', 'Visual Basic', 'Ms Visual Studio', 'Ms Office Suite (Word, Excel, Project, PowerPoint, Access, Outlook, Visio)', 'Simulations using Witness13 and SIMIO', 'ERP-SAP', 'SAS-STAT', 'AutoCAD', 'budgeting', 'CNC', 'Continuous Improvement', 'data collection', 'Product Development and Design', 'documentation', 'ERP', 'grinders', 'Inventory Control', 'ISO', 'Languages', 'lathe', 'layout', 'layout design', 'Logistics', 'materials', 'Access', 'Excel', 'Outlook', 'PowerPoint', 'Word', 'new product development', 'payroll', 'philosophy', 'process improvement', 'process design', 'processes', 'Project Management', 'project plans', 'quality', 'quality control', 'research', 'Safety', 'SAP', 'SAS', 'simulation', 'Six Sigma', 'SQL', 'Statistical Process Control', 'Supply Chain', 'Visio']",
+      "education": "['University of Texas Arlington', 'Federal University of Technology']",
+      "experience": "['Industrial Engineering Intern', 'Industrial Engineer', 'Industrial Engineer', 'Manufacturing Quality Engineer']",
+      "certifications": "[['Project Management']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 240.36512500001118,
+      "end_to_end_ms": 240.36637500001234
+    }
+  },
+  {
+    "id": 31,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['MIS reporting', 'Advanced Excel', 'Dashboards', 'Data Analysis', 'SQL', 'MySQL', 'Power Bi', 'Machine Learning', 'Linear Regression', 'Statistical Analysis', 'Clustering', 'NoSQL', 'MongoDB', 'Python', 'EDA', 'Business Intelligence', 'Logistic Regression']",
+      "education": "['Shivaji College', 'Indira Gandhi National Open University']",
+      "experience": "['MIS Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 254.87954199998057,
+      "end_to_end_ms": 254.88175000000047
+    }
+  },
+  {
+    "id": 32,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['Python', 'Machine Learning', 'Deep Learning', 'R', 'Computer Vision', 'Numpy', 'Panda', 'Matplotlib', 'MySQL', 'OpenCV', 'PyTorch']",
+      "education": "['Punjab University']",
+      "experience": "['Intern Trainee', 'Intern Developer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 246.46591699999408,
+      "end_to_end_ms": 246.46824999997625
+    }
+  },
+  {
+    "id": 33,
+    "status": "Failed",
+    "dataset_match_score": "0.613333333",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Deep Learning', 'Neural Networks', 'ML Algorithms', 'Python', 'NumPy', 'Scikit Learn', 'Matplotlib', 'Keras', 'Pandas', 'TensorFlow', 'Seaborn', 'Java', 'ReactJS', 'NodeJS']",
+      "education": "['KTM College, Nashik (affiliated with Lucknow University)', 'SPP University, Pune']",
+      "experience": "['Intern Trainee']",
+      "certifications": "[['Python Programming'], ['Python Programming']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 237.9151669999992,
+      "end_to_end_ms": 237.91741599998204
+    }
+  },
+  {
+    "id": 34,
+    "status": "Failed",
+    "dataset_match_score": "0.54",
+    "ground_truth": {
+      "skills": "['Bluebeam', 'Mathcad', 'Microsoft Word', 'Excel', 'Project', 'Powerpoint', 'Autocad Civil 3D']",
+      "education": "['University of Pittsburgh at Johnstown']",
+      "experience": "['Engineering Intern', 'Field Engineering Intern', 'Field Engineering Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 723.5165830000187,
+      "end_to_end_ms": 723.5177089999779
+    }
+  },
+  {
+    "id": 35,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Microsoft Applications', 'Network Security', 'Networking', 'PC hardware and software installation, configuration, and troubleshooting', 'Remote Desktop and Help Desk Management', 'Verbal Communication', 'Technical Support', 'Team Leadership', 'Programming Languages', 'On-call tech support', 'Windows & Mac OS', 'Wiring/Wire Spicing: Cat3, Cat5, Cat5e, Coaxial', 'Management', 'VoIP, TCP/IP, IPSec, ATM, SS7, IPX, DNS, BIND, DHCP, HSRP and LAN/WAN architecture', 'Application Development', 'Voice Over IP Telephone', 'Inventory Management']",
+      "education": "['Glen Oaks High School', 'Glen Oaks High School']",
+      "experience": "['Engineering Systems Installer', 'IT Technician/QA Tester', 'Installation/Service Technician']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 246.56137499999022,
+      "end_to_end_ms": 246.56287499997416
+    }
+  },
+  {
+    "id": 36,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Lead Development', 'build teams', 'mentor', 'interface with customers and vendors', 'architect end to end', 'Develop products in consumer electronics', 'digital TV', 'industrial automation', 'control systems', 'C', 'C++', 'JAVA', 'JVM', 'Embedded Linux', 'LXC', 'Device Drivers', 'Socs', 'RTOS - OS9', 'VXWorks', 'DVB', 'MPEG', 'H.264', 'HLS', 'MP4', 'JSON', 'REST', 'SOAP', 'XML', 'SNMP', 'TR069', 'Microcontrollers', 'hardware', 'Matlab', 'Octave', 'Mathematical modeling', 'Integrating content protection systems', 'Agile Methodologies', 'Scrum', 'SDLC', 'project planning and management', 'leadership']",
+      "education": "['Indian Institute of Technology', 'Devi Ahilya University', 'Coursera - Stanford']",
+      "experience": "['Engineering Manager', 'Engineering Manager, Architect', 'Senior Software Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 248.2436250000028,
+      "end_to_end_ms": 248.24441699997988
+    }
+  },
+  {
+    "id": 37,
+    "status": "Failed",
+    "dataset_match_score": "0.416666667",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Software Development', 'Text Analysis', 'Natural Language Processing', 'Image Processing', 'Python', 'Data Management', 'Scikit Learn', 'C', 'C#', '.NET', 'SQL']",
+      "education": "['Punjab Technical University']",
+      "experience": "['Trainee']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 255.94820899999468,
+      "end_to_end_ms": 255.95470800000476
+    }
+  },
+  {
+    "id": 38,
+    "status": "Failed",
+    "dataset_match_score": "0.75",
+    "ground_truth": {
+      "skills": "['Python', 'Scikit Learn', 'Keras', 'Tensorflow', 'Object Oriented Programming', 'Machine Learning', 'Software Engineering', 'Application Development']",
+      "education": "['Jodhpur University', 'IIIT Delhi']",
+      "experience": "['Software Developer and Analyst Trainee']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 260.0337500000023,
+      "end_to_end_ms": 260.0364999999874
+    }
+  },
+  {
+    "id": 39,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Team-oriented', 'Detail-oriented', 'Deadlines focused', 'Excellent communication and presentation skills', 'Quick learner', 'Strong management skills', 'Good analytical skills', 'Ability of managing multi tasks', 'Accounting Software: PeopleSoft / QuickBooks', 'Tax Software: Drake / Ultra Tax / TurboTax', 'Operating Systems: XP Windows Professional / Windows 7/ Windows 8', 'Microsoft Office: Word / Advanced MS Excel skills /MS Access / PowerPoint / Outlook', 'PDF: Adobe Reader / Adobe Acrobat X']",
+      "education": "['University of Houston']",
+      "experience": "['Accountant', 'Tax Accountant', 'Accounting Manager', 'Tax Accountant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 294.09183299998404,
+      "end_to_end_ms": 294.09379099999205
+    }
+  },
+  {
+    "id": 40,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['Communication Skills', 'High efficiency', 'High attention to Details', 'ERP/Accounting systems Proficiency', 'Advanced utilization Microsoft Office Suite', 'Excel']",
+      "education": "['Monash University', 'Victoria University']",
+      "experience": "['Financial Accountant', 'Assistant Accountant', 'Assistant Accountant', 'Front Office Officer', 'Internship - Credit Officer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 251.39279199999874,
+      "end_to_end_ms": 251.3943750000035
+    }
+  },
+  {
+    "id": 41,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['Results-oriented', 'Operations management', 'Client-focused', 'Excel in [areas of expertise]', 'Proficiency in [area]', 'accounting', 'accounting manager', 'accounting system', 'accounts payable', 'accounts receivable', 'auditing', 'bank reconciliations', 'cash receipts', 'documentation', 'E-mail', 'financial', 'mail', 'payables', 'personnel', 'processes', 'maintain files', 'spreadsheet', 'phone', 'treasury', 'written', 'yearend']",
+      "education": "['National Education Center', 'University of Kerala']",
+      "experience": "['Accountant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 319.69216600002255,
+      "end_to_end_ms": 319.694416000013
+    }
+  },
+  {
+    "id": 42,
+    "status": "Failed",
+    "dataset_match_score": "0.6933333333333334",
+    "ground_truth": {
+      "skills": "['Microsoft Word/Excel', 'Great Plains Dynamics', 'BI360 (BusinessIntelligence Tool)', 'Keane Care']",
+      "education": "['MERCY COLLEGE']",
+      "experience": "['Senior Accountant', 'Senior Accountant', 'Senior Accountant', 'Controller']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 270.0011249999807,
+      "end_to_end_ms": 270.0032920000085
+    }
+  },
+  {
+    "id": 43,
+    "status": "Failed",
+    "dataset_match_score": "0.416666667",
+    "ground_truth": {
+      "skills": "['Data Analysis', 'Data Mining', 'Data Modeling', 'Data Processing', 'Machine Learning', 'Natural Language Processing', 'Artificial Intelligence', 'Statistics', 'SQL', 'Tableau', 'PowerBI']",
+      "education": "['Bhimrao Sen College']",
+      "experience": "['Data Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 288.8691670000262,
+      "end_to_end_ms": 288.87108300000546
+    }
+  },
+  {
+    "id": 44,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Experienced with Microsoft Office - Word, Excel, Outlook, SharePoint & Costpoint', 'Administrative Assistant', 'Benefits', 'Clerical', 'Clients', 'Data entry', 'Database', 'Features', 'Filing', 'Forms', 'GIS', 'Mailing', 'Meetings', 'Excel', 'Mail', 'Outlook', 'SharePoint', 'Microsoft Office - Word', 'Office equipment', 'Policies', 'Processes', 'Reception', 'Recording', 'Retail', 'Scanning', 'Telephone', 'Phone', 'Typing']",
+      "education": "['University of Alabama in Huntsville - City , State', 'East Limestone High School - City , State']",
+      "experience": "['Engineering Office Clerk', 'Benefits Clerk', 'Sales Associate']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 627.2244580000115,
+      "end_to_end_ms": 627.2267920000013
+    }
+  },
+  {
+    "id": 45,
+    "status": "Failed",
+    "dataset_match_score": "0.88",
+    "ground_truth": {
+      "skills": "['Operations management', 'Change management', 'Inventory control', 'Policy/program development', 'Supervision and training', 'Sound judgment', 'Computersavvy', 'Calm under pressure', 'Complex problem solving', 'Motivational', 'Continuous Improvement', 'Out of the box thinking', 'Analytical and logical', 'Strong Leadership skills', 'Lean Manufacturing and Management', 'Six Sigma tools and methodologies', 'RCM', 'FMEA', 'DMAIC', 'PFD', 'Six Sigma Certified', 'Microsoft Office 2003-2011', 'Microsoft Visio, 2008-2010', 'Business Objects', 'SAP', 'Apple Lion', 'Pages', 'Keynote', 'Numbers', 'Microsoft Access 2010', 'Visual Studio 2008-2010', 'Microsoft Project', 'Netbeans', 'TextPad', 'SQL Server 2008', 'PowerSteering', 'Tango', 'HTML', 'Css', 'Java', 'Java Script', 'C++', 'VB.NET', 'ASP.NET', 'Web Design 1', 'Web Design 2', 'Algorithms', 'Software Engineering', 'VB.NET', 'ASP.NET', 'Apple', 'Budget Management', 'Business Objects', 'C++', 'Calculator', 'Coach', 'interpersonal skills', 'Continuous Improvement', 'Css', 'client', 'customer relations', 'customer service', 'documentation', 'Facilities Management', 'Financial Reporting', 'GUI', 'HTML', 'Human Resource Management', 'HR', 'Inventory', 'inventory levels', 'Inventory Control', 'Java', 'Java 1', 'Java 2', 'Java Script', 'Leadership skills', 'Lean Manufacturing', 'managing', 'manufacturing process', 'materials', 'Microsoft Access', 'Microsoft Office', 'Microsoft Project', 'Microsoft Visio', 'Works', 'personnel', 'policies', 'problem-solving skills', 'processes', 'project management', 'Purchasing', 'quality', 'maintain records', 're-engineering', 'repairs', 'reporting', 'safety', 'SAP', 'Six Sigma', 'Software Engineering', 'software training', 'SQL Server', 'supervision', 'supply chain', 'supply chain management', 'Tango', 'user support', 'Visual Studio', 'water treatment', 'Web Design 1', 'Web Design 2', 'websites']",
+      "education": "['McFord University', 'McFord University', 'University Of Phoenix College']",
+      "experience": "['Corporate Process/Systems Engineering Manager', 'SDI Site Operations Manager', 'Operations Group Manager']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 721.5409999999974,
+      "end_to_end_ms": 721.5425830000022
+    }
+  },
+  {
+    "id": 46,
+    "status": "Failed",
+    "dataset_match_score": "0.416666667",
+    "ground_truth": {
+      "skills": "['automotive', 'basic', 'broadcast', 'cables', 'cable', 'cabling', 'carpentry', 'chill', 'CA', 'conversion', 'Council', 'SC', 'Direction', 'documentation', 'electrical systems', 'electronics', 'equipment installation', 'experimentation', 'FAX', 'forms', 'government', 'GPS', 'HVAC', 'inspecting', 'Inspection', 'laboratory testing', 'leadership', 'team leadership', 'Team Lead', 'team leader', 'lighting', 'Logic', 'Maple', 'mechanical', 'Navy', 'NDS', 'Network', 'OSS', 'personnel', 'plumbing', 'Positioning', 'Power Supply', 'power supplies', 'quality', 'Radio', 'recording', 'San', 'scheduling', 'sorting', 'technical documentation', 'Technician V', 'telecommunications', 'transmission', 'troubleshooting', 'UHF', 'upgrades', 'upgrade', 'VHF', 'Video', 'welder', 'welding', 'written communications']",
+      "education": "['Norview High School']",
+      "experience": "['Engineering Technician V', 'Engineering Technician V', 'Maintenance Technician', 'Installation Technician', 'Electrical/Mechanical Foreman', 'Electrical Apprentice']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 256.2163330000185,
+      "end_to_end_ms": 256.2190830000036
+    }
+  },
+  {
+    "id": 47,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['accounting software', 'AutoCAD', 'balance', 'budget', 'capital expenditures', 'handling cash', 'Civil Engineering', 'interpersonal communications', 'Consulting', 'contracts', 'prepare contract', 'Client', 'customer care', 'DC', 'Design and Construction', 'Engineering Design', 'expense reports', 'filing', 'marketing research', 'Materials', 'meetings', 'MS Excel', 'office', 'MS PowerPoint', 'MS Word', 'MicroStation', 'peak', 'Prime', 'project plans', 'Express', 'recording', 'Specification', 'Transportation', 'utilities', 'written communication']",
+      "education": "['George Mason University']",
+      "experience": "['Engineering Assistant', 'Medical Receptionist', 'Teller', 'Engineer Technician IV']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 266.7248339999933,
+      "end_to_end_ms": 266.7257910000044
+    }
+  },
+  {
+    "id": 48,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Account Reconciliation', 'Accounting', 'Accounts Payable', 'Accounts Receivable', 'AR', 'Billing', 'Budget', 'Cash Handling', 'Closing', 'Coaching', 'Communication Skills', 'Contracts', 'Credit', 'Customer Service', 'Financial', 'Forms', 'General Ledger', 'General Ledger Accounts', 'Grants', 'Groupwise', 'Instructing', 'Mentoring', 'Merchandising', 'Microsoft Office', 'Outlook', 'Organizational Skills', 'Packaging', 'Policies', 'Pricing', 'Public Speaking', 'Purchasing', 'Receiving', 'Reconciling', 'Research', 'Spreadsheets', 'Team Player', 'Time Management', 'Year-End']",
+      "education": "['Prairie View A & M University', 'University of North Texas', 'University of North Texas']",
+      "experience": "['Accountant III', 'Assistant Accountant', 'Accounting Clerk B', 'Accounting Instructor', 'Student Accounts Representative/Bookkeeper']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 257.3322090000147,
+      "end_to_end_ms": 257.3344159999979
+    }
+  },
+  {
+    "id": 49,
+    "status": "Failed",
+    "dataset_match_score": "0.943333333",
+    "ground_truth": {
+      "skills": "['Visual Studio Code', 'Git', 'Xilinx Vivado', 'MATLAB', 'AutoCAD', 'VHDL', 'Wireshark', 'Arduino IDE', 'VMware', 'JUnit']",
+      "education": "['Carnegie Mellon University']",
+      "experience": "['Computer Engineer', 'Systems Analyst', 'IT Support Specialist']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 710.3301659999997,
+      "end_to_end_ms": 710.3323749999981
+    }
+  },
+  {
+    "id": 50,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Microsoft Office Suite', 'Dynamic AX', 'Access', 'Excel', 'PowerPoint', 'Word', 'Microsoft Teams', 'Oracle', 'PeopleSoft', 'Sales Force', 'SAP', 'Jira', 'SharePoint', 'Gantt Chart Scheduler', 'strong written and verbal communication skills', 'project management lifecycle', 'Streamline', 'ad', 'advertisements', 'advertising', 'ad copy', 'agile', 'automation', 'billing', 'budgets', 'cable', 'hardware', 'client', 'clients', 'database', 'engineering projects', 'financial', 'focus', 'inventory', 'leadership', 'managing', 'market trends', 'processes', 'project management', 'proposals', 'real time', 'reporting', 'Sales', 'scheduling', 'verbal communication skills', 'workbench', 'written communication skills']",
+      "education": "['Oakland University']",
+      "experience": "['Engineering Project Manager', 'Sr. Project Manager', 'Sr. Traffic Coordinator Ad Manager']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 376.97341700003017,
+      "end_to_end_ms": 376.97483299998567
+    }
+  },
+  {
+    "id": 51,
+    "status": "Failed",
+    "dataset_match_score": "0.816666667",
+    "ground_truth": {
+      "skills": "['Software Development', 'Machine Learning', 'Deep Learning', 'Risk Assessment', 'Requirement Gathering', 'Application Support', 'JavaScript', 'Python', 'Docker', 'HTML', 'Hive', 'CSS', 'C', 'C++']",
+      "education": "['Birla Institute of Technology (BIT), Ranchi']",
+      "experience": "['Software Developer (Machine Learning Engineer)']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 298.13441599998623,
+      "end_to_end_ms": 298.13650000002235
+    }
+  },
+  {
+    "id": 52,
+    "status": "Failed",
+    "dataset_match_score": "0.583333333",
+    "ground_truth": {
+      "skills": "['Data Science', 'Data Analysis', 'Deep Learning', 'Machine Learning', 'Artificial Intelligence', 'Linear Regression', 'Statistical Modeling', 'Predictive Modeling', 'Bootstrap', 'MySQL', 'JDBC', 'HTML', 'PHP', 'CSS', 'C++']",
+      "education": "['BGBS College, Mohantpur', 'BGBS College, Mohantpur']",
+      "experience": "['Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 521.9080839999951,
+      "end_to_end_ms": 521.9094159999513
+    }
+  },
+  {
+    "id": 53,
+    "status": "Failed",
+    "dataset_match_score": "0.75",
+    "ground_truth": {
+      "skills": "['Visual Basic', 'SQL', 'C', 'C++', 'Java', 'Windows NT', 'Windows 2000', 'Windows XP', 'Windows Vista', 'Linux', 'Unix', 'SQL Server', 'Microsoft (MS) Access', 'Oracle', 'JCL', 'DB2', 'MS Visio', 'MS Excel', 'MS FrontPage', 'MS Word']",
+      "education": "['Southeastern Louisiana University (SLU)']",
+      "experience": "['Blog Writer', 'Unix Administrator Assistant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 290.00091699999757,
+      "end_to_end_ms": 290.00225000001956
+    }
+  },
+  {
+    "id": 54,
+    "status": "Failed",
+    "dataset_match_score": "0.826666667",
+    "ground_truth": {
+      "skills": "['AutoCAD', 'C++', 'Visual Basics', 'Programmable Logic Controllers', 'Electrical Mechanical Systems', 'Instrumentation and Controls', 'Industrial Electricity', 'Engineering Economy', 'Technical Grammar Skills', 'Communication', 'Team work', 'Problem solving skills', 'Leadership']",
+      "education": "['Middle Tennessee State University']",
+      "experience": "['Engineering Business Unit Leader', 'Project Engineer', 'Operations Technician']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 265.9097500000498,
+      "end_to_end_ms": 265.9110830000136
+    }
+  },
+  {
+    "id": 55,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['credit', 'customer service', 'data entry', 'dispatching', 'drivers', 'focus', 'forms', 'inventory', 'Excel', 'Outlook', 'Publisher', 'Word', 'quick', 'Sales', 'scheduling', 'supervising', 'phone', 'time management', 'transportation', 'websites']",
+      "education": "['Purdue University']",
+      "experience": "['Engineering Technologist', 'Sr Administrative Assistant/Technologist', 'Assistant Office Manager', 'Dispatch Assistant', 'Bartender']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 270.78604099998483,
+      "end_to_end_ms": 270.78833399998257
+    }
+  },
+  {
+    "id": 56,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['Snowflake', 'Python', 'C++', 'R', 'SQL', 'Tableau', 'PyTorch']",
+      "education": "['University of British Columbia']",
+      "experience": "['Computer Vision Scientist', 'IT Data Scientist', 'Associate Data Scientist']",
+      "certifications": "[None, None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 272.9465419999906,
+      "end_to_end_ms": 272.9485420000274
+    }
+  },
+  {
+    "id": 57,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Machine Learning Engineer', 'Data Processing', 'Data Modelling', 'Data Structures', 'Deep Learning', 'Application Development', 'Python', 'Django', 'Flask', 'Kubernetes', 'C++']",
+      "education": "['SHRI GURU GOBIND SINGHJI COLLEGE OF ENGINEERING AND TECHNOLOGY, NANED']",
+      "experience": "['MACHINE LEARNING ENGINEER', 'RESEARCH ASSISTANT']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 285.4969999999739,
+      "end_to_end_ms": 285.4994159999769
+    }
+  },
+  {
+    "id": 58,
+    "status": "Failed",
+    "dataset_match_score": "0.35",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Natural Language Processing', 'Deep Learning', 'Sentiment Analysis', 'Python', 'NLTK', 'BeRT', 'GPT', 'XLNet', 'Text Analysis', 'Text Extraction', 'OCR']",
+      "education": "['Rajiv Gandhi Memorial University, Delhi']",
+      "experience": "['NLP Developer Intern']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 260.421875,
+      "end_to_end_ms": 260.42399999999907
+    }
+  },
+  {
+    "id": 59,
+    "status": "Failed",
+    "dataset_match_score": "0.816666667",
+    "ground_truth": {
+      "skills": "['Architecting best practice technical solutions', 'Technical program management', 'QA/QM', 'Client management', 'Vendor management', 'Testing and commissioning planning and execution', 'Team leadership / cross-team collaboration', 'Engineering cost estimating', 'Engineering resource management and forecasting', 'Process improvement']",
+      "education": "['University of California at Santa Barbara']",
+      "experience": "['Regional Engineering Manager', 'Engineering Supervisor', 'Senior Engineer', 'Systems Engineer II', 'Control Systems Engineer I / II', 'Associate Systems Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 278.13054199999897,
+      "end_to_end_ms": 278.13162499998
+    }
+  },
+  {
+    "id": 60,
+    "status": "Failed",
+    "dataset_match_score": "0.726666667",
+    "ground_truth": {
+      "skills": "['Program Management', 'Portfolio Management', 'Process Analysis', 'Solution Design', 'Enterprise Software', 'Systems Integration', 'Data Management', 'Product Excellence', 'Agile Methodology', 'People Development', 'Leadership Development', 'Coaching/Mentoring']",
+      "education": "['Claremont Graduate University', 'Claremont Graduate University', \"Mount St. Mary's University\"]",
+      "experience": "['Senior Engineering Program Manager', 'Founder/Principal Consultant', 'Senior Manager', 'Adjunct Professor', 'Instructor']",
+      "certifications": "[None, None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 255.46120800002245,
+      "end_to_end_ms": 255.46316700003808
+    }
+  },
+  {
+    "id": 61,
+    "status": "Failed",
+    "dataset_match_score": "0.693333333",
+    "ground_truth": {
+      "skills": "['Data entry', 'Employee training', 'Equipment maintenance', 'ERP : Microsoft AX Dynamics', 'Failure analysis', 'Inspection', 'Lean manufacturing', 'Mechanical processes', 'protocols execution', 'Supervisory', 'System integration', 'Team player', 'Troubleshooting']",
+      "education": "['East Boston High School']",
+      "experience": "['Engineering Technician', 'Sr. Repair Technician', 'Lead Manufacturing Technician Production Supervisor', 'Wafer Fab Technician', 'Assembler/Operator', 'Test Technician']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 280.17504200001713,
+      "end_to_end_ms": 280.1770840000245
+    }
+  },
+  {
+    "id": 62,
+    "status": "Failed",
+    "dataset_match_score": "0.3066666666666667",
+    "ground_truth": {
+      "skills": "['Analytical reasoning', 'Compliance testing knowledge', 'Effective time management', 'Public and private accounting', 'accounting', 'accounting systems', 'accounts payable', 'accounts receivable', 'administrative', 'AR', 'billing', 'closing', 'client', 'clients', 'documentation', 'financial', 'financial reports', 'preparation of financial reports', 'Preparation of financial statements', 'fixed assets', 'managing', 'month-end closing', 'policies', 'maintain records', 'reporting', 'Research', 'sales', 'tax', 'taxes', 'tax returns', 'annual reports', 'year-end']",
+      "education": "['Kent State University']",
+      "experience": "['Staff Accountant', 'Senior Accountant', 'Tax Analyst', 'Staff Accountant II', 'Staff Auditor II']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 242.14045800000895,
+      "end_to_end_ms": 242.14233399997465
+    }
+  },
+  {
+    "id": 63,
+    "status": "Failed",
+    "dataset_match_score": "0.683333333",
+    "ground_truth": {
+      "skills": "['Machine Learning Engineering', 'Algorithm development', 'Python', 'Data Arbitration', 'Neural Networks', 'PyTorch', 'Pattern Recognition', 'Chatbot']",
+      "education": "['St Josephs College of Arts And Science Bengaluru', 'Loyola Academy Degree & PG College, Hyderabad']",
+      "experience": "['Associate Machine Learning Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 236.96233400003985,
+      "end_to_end_ms": 236.96483299997635
+    }
+  },
+  {
+    "id": 64,
+    "status": "Failed",
+    "dataset_match_score": "0.65",
+    "ground_truth": {
+      "skills": "['Requirement Analysis', 'Machine Learning', 'Predictive Analytics', 'Python', 'Tableau', 'PowerBI', 'R', 'SQL', 'Advanced Excel', 'Business Analytics']",
+      "education": "['Sri Venkateshwara University (SVU)']",
+      "experience": "['BU Analyst Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 248.21516600000905,
+      "end_to_end_ms": 248.2170829999959
+    }
+  },
+  {
+    "id": 65,
+    "status": "Failed",
+    "dataset_match_score": "0.48",
+    "ground_truth": {
+      "skills": "['Data Analysis', 'Machine learning', 'Data Mining', 'Natural Language Processing', 'Linear Regression', 'Cluster Analysis', 'Correlation Analysis', 'Logistic Regression', 'Principal Component Analysis', 'Anova', 'Neural Networks', 'R', 'Python', 'MySQL', 'Tableau', 'Excel', 'SPSS', 'Decision tree']",
+      "education": "['MamCO University', 'MamCO University']",
+      "experience": "['Machine Learning Junior Developer']",
+      "certifications": "[['Big Data Analysis', 'Hadoop']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 335.1318329999922,
+      "end_to_end_ms": 335.13408300001174
+    }
+  },
+  {
+    "id": 66,
+    "status": "Failed",
+    "dataset_match_score": "0.793333333",
+    "ground_truth": {
+      "skills": "['API', 'Approach', 'ATL', 'audio', 'backup', 'broadcast', 'C++', 'CLI', 'com', 'CA', 'Hardware', 'concept', 'Content', 'clients', 'documentation', 'dynamic HTML5', 'editing', 'XML', 'FTP', 'functional', 'drawing', 'GUI', 'http', 'IDs', 'Innovation', 'explorer', 'IP', 'JavaScript', 'json', 'LAN', 'MB', 'C#', 'MFC', 'office', 'Win', 'Windows', '2000', 'migration', 'NAS', 'OOP', 'page', 'Proxy', 'rendering', 'SAN', 'Scrum', 'servers', 'specification', 'team management', 'threads', 'troubleshoot', 'Video', 'Video Editing', 'Visual C++', 'workflow', 'writer']",
+      "education": "['Illinois Institute of Technology', 'National Institute of Technology']",
+      "experience": "['Software Engineering Manager', 'Software Engineering Manager', 'Principal Software Engineer', 'Software Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 238.25037499994505,
+      "end_to_end_ms": 238.25325000000885
+    }
+  },
+  {
+    "id": 67,
+    "status": "Failed",
+    "dataset_match_score": "0.4166666666666667",
+    "ground_truth": {
+      "skills": "['accounting', 'Accountant', 'Arabic', 'Balance Sheet', 'bank reconciliations', 'com', 'resolve customer complaints', 'Customer Service', 'databases', 'delivery', 'E-mail', 'English', 'expense reports', 'Financial', 'Financial and accounting', 'financial statements', 'forms', 'general ledger', 'Lecturer', 'excel', 'office', 'Microsoft word', 'Page', 'pricing', 'QuickBooks', 'telephone', 'phone', 'workflow', 'written']",
+      "education": "['Alexandria University']",
+      "experience": "['N/A', 'N/A', 'General Accountant', 'General Accountant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 290.58049999998184,
+      "end_to_end_ms": 290.5816660000128
+    }
+  },
+  {
+    "id": 68,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['C', 'C++', 'Python', 'JAVA', 'HTML', 'CSS', 'JavaScript', 'Data Structures', 'SQL', 'PyCharm', 'Jupyter Notebook', 'Google Colab', 'Code Blocks', 'MATLAB', 'Turbo C++', 'MS Office', 'Scikit-Learn', 'TensorFlow', 'OpenCV', 'NumPy', 'Pytesseract', 'Keras']",
+      "education": "['Dayalbagh Educational Institute, Dayalbagh, Agra', \"St. Clare's Senior Secondary School, Agra\", \"St. Clare's Senior Secondary School, Agra\"]",
+      "experience": "['Intern', 'Intern']",
+      "certifications": "[['Deep Learning', 'Computer Vision', 'OpenCV', 'SSD', 'GANs'], ['Neural Networks', 'Deep Learning'], ['Machine Learning', 'Python', 'R', 'Data Science'], ['Python']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 266.07012499996927,
+      "end_to_end_ms": 266.0720830000355
+    }
+  },
+  {
+    "id": 69,
+    "status": "Failed",
+    "dataset_match_score": "0.583333333",
+    "ground_truth": {
+      "skills": "['Basic and Advanced Supervision Training Courses', 'CBMET', \"Toshiba certified service trained on Aquilion 16, 32 and 64 slice CT's\", 'Toshiba certified service trained on Vantage 1.5 T 8 channel MRI', 'Toshiba certified service trained on Siemens E-Cam Nuclear Medicine Camera', 'Aramark service trained on GE AMX 4 and AMX4+ portable XR unit', 'Aramark service trained on GE 9600, 9800, 9900 Portable C-Arm', 'Aramark service trained on GE Precision 500 Radiology and Fluoroscopic image system', 'Microsoft Applications', 'Foresight Imaging Systems trained on DICOM protocols', 'Skilled in the operation of MS 2000, Windows 7, MySQL, PHP, Apache, UNIX, Linux, Cisco', 'Skilled in the operation of networks', 'Skilled in the operation of workstations and servers']",
+      "education": "['West Virginia State University', 'Marshall University', 'Center College']",
+      "experience": "['Clinical Engineering Manager', 'Imaging Service Engineer', 'Imaging Service Engineer', 'Biomedical Equipment Technician II']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 269.7957910000114,
+      "end_to_end_ms": 269.79804200003855
+    }
+  },
+  {
+    "id": 70,
+    "status": "Failed",
+    "dataset_match_score": "0.33",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Deep Learning', 'Computer Vision', 'Pattern Recognition', 'Image Processing', 'Image Segmentation', 'Python', 'Ruby', 'PILLOW', 'OpenCV']",
+      "education": "['JT University']",
+      "experience": "['Computer Vision Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 281.168834000011,
+      "end_to_end_ms": 281.17029199999524
+    }
+  },
+  {
+    "id": 71,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Web Development', 'Neural Networks', 'Deep Learning', 'Machine Learning', 'Python', 'TensorflowJS', 'Front End', 'HTML', 'CSS', 'JavaScript', 'Flutter']",
+      "education": "['SGGS College of Engineering and Technology']",
+      "experience": "['Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 267.34350000001723,
+      "end_to_end_ms": 267.3460830000113
+    }
+  },
+  {
+    "id": 72,
+    "status": "Failed",
+    "dataset_match_score": "0.6833333333333332",
+    "ground_truth": {
+      "skills": "['Accounting', 'Sales', 'Inventory', 'Payroll', 'Reconciliations', 'Bookkeeper', 'Audits', 'Operations', 'Accounts Payable', 'Accounts Receivable', 'Assembly', 'Closings', 'Contracts', 'Customer Service', 'Direct Sales', 'Fixed Assets', 'Food Safety', 'Government Contracts', 'Logistics', 'Maintenance', 'Quality Assurance', 'Receptionist', 'Retail Sales', 'Shipping', 'USDA', 'Staffing', 'Cash', 'Clerk', 'Merchandising', 'Ordering', 'Automated Payroll', 'Payroll Processing', 'Software Training', 'Training', 'Accountant', 'Credit', 'Billing', 'CSI', 'Excel', 'MS Excel', 'Networking', 'Forecasting', 'GL', 'Telephone', 'Adjustments', 'Audit', 'Balance Sheet', 'Budgeting', 'Monthly Sales', 'Sales Tax', 'Annuities', 'CPA', 'Life Insurance', 'Procedure Writing', 'Project Management', 'Public Relations', 'Team Building', 'Administrative Manager', 'HR', 'Microsoft Office', 'Purchase Orders']",
+      "education": "['Dallas Theological Seminary', 'Marshall University', 'Hocking Technical College']",
+      "experience": "['Accountant', 'District Administrative Manager', 'Business Manager', 'Staffing Manager', 'Accounting Manager', 'General Merchandise Department Manager', 'Accounting Software Consultant', 'Accountant']",
+      "certifications": "[['N/A']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 639.1487080000225,
+      "end_to_end_ms": 639.1506250000093
+    }
+  },
+  {
+    "id": 73,
+    "status": "Failed",
+    "dataset_match_score": "0.7833333333333333",
+    "ground_truth": {
+      "skills": "['New Business Development', 'Sales Management', 'MS Office Suite', 'Salesforce / CRM']",
+      "education": "['Western Governors University', 'University of Phoenix', 'Oklahoma Baptist University']",
+      "experience": "['Director of Business Development', 'Director of Business Development', 'Director of Business Development', 'Director of Sales Operations and Business Development', 'Sales Director', 'Regional Publishing Consultant', 'Senior Sales Representative', 'Owner', 'Branch Manager']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 247.93041699996684,
+      "end_to_end_ms": 247.9316659999895
+    }
+  },
+  {
+    "id": 74,
+    "status": "Failed",
+    "dataset_match_score": "0.6166666666666667",
+    "ground_truth": {
+      "skills": "['accounting', 'Accounting Systems', 'ad', 'analytical skills', 'auditing', 'automation', 'billing', 'budgeting', 'budgets', 'Budget', 'business operations', 'business process', 'Cash-Flow', 'cash flow', 'closing', 'contracts', 'CPA', 'Crystal Reports', 'Database Management', 'Essbase', 'senior management', 'financial', 'Financial Accounting', 'financial analysis', 'financial analysis/planning', 'Financial Reporting', 'financial statements', 'fixed assets', 'Forecasting', 'general ledger', 'Great Plains', 'Hyperion', 'inventory', 'ledger', 'law', 'market', 'MAS 90', 'Excel', 'MS Office', 'negotiation', 'Enterprise', 'Peachtree', 'personnel', 'policies', 'pricing', 'processes', 'quantitative analysis', 'QuickBooks', 'reconciling', 'relationship management', 'reporting', 'researching', 'Research', 'sales', 'SarbanesOxley', 'Strategic Planning', 'Tax Preparation', 'tax', 'taxes', 'Trend']",
+      "education": "['University of Maryland University College']",
+      "experience": "['Lead Accountant', 'Senior Accountant', 'Senior Accountant']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 249.83687500003725,
+      "end_to_end_ms": 249.83870799996657
+    }
+  },
+  {
+    "id": 75,
+    "status": "Failed",
+    "dataset_match_score": "0.826666667",
+    "ground_truth": {
+      "skills": "['Training program implementation', 'Project management', 'Drilling engineering', 'Building commissioning experience', 'A highly motivated and energetic personality.', 'Ability to take initiative and exhibit flexibility.', 'Excellent customer service skills.', 'Leadership Development Program', 'Hands On Training: Electrical, Pluming, Painting, Full Finish, Wall Paper', 'Management Training, Team Builder, Outlook Training, Excel Training, Hotsos Training, Stratton Warren \"MMS\"', 'Interpersonal communication skills', 'Demonstrated organizational/planning skills', 'Adaptability', 'Ability to translate technical specifications', 'Have interpersonal skills to deal effectively with all business contacts.']",
+      "education": "['El Dorado High School']",
+      "experience": "['Engineering Supervisor', 'Engineering Assistance Supervisor', 'Sky Cap']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 480.73587500001304,
+      "end_to_end_ms": 480.7376670000376
+    }
+  },
+  {
+    "id": 76,
+    "status": "Failed",
+    "dataset_match_score": "0.75",
+    "ground_truth": {
+      "skills": "['C++', 'Python', 'Firebase', 'Flutter', 'Tensorflow', 'Pandas', 'Numpy', 'Kotlin', 'Java', 'MongoDB', 'NoSQL']",
+      "education": "['National Institute of Technology (NIT), Hamirpur']",
+      "experience": "['SDE']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 290.2208330000285,
+      "end_to_end_ms": 290.228415999969
+    }
+  },
+  {
+    "id": 77,
+    "status": "Failed",
+    "dataset_match_score": "0.533333333",
+    "ground_truth": {
+      "skills": "['Live Electrical', 'Arc Flash', 'Lock-Out/Tag-Out', 'ESD', 'functional testing', 'test equipment repair and operation', 'troubleshooting', 'ISO-9001 standards', 'electrical equipment operation', 'Mechanical repair', 'oil servicing', 'Power Generation', 'soldering', 'electrical component repair', 'safety awareness', 'schematics', 'blueprints', 'drawings', 'various testing equipment', 'equipment/wiring installation', 'solenoid/valves', 'PC repair', 'fabrication', 'well organized', 'self motivated', 'excellent written and verbal communication skills']",
+      "education": "['Embry Riddle Aeronautical University', 'Pueblo High School']",
+      "experience": "['Engineering Technician III', 'Generator Test Technician III', 'Unmanned Aerial Vehicle (UAV) Maintenance Technician', 'Electrical Power Generation Equipment Repairer Technician']",
+      "certifications": "[None]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 238.5216669999645,
+      "end_to_end_ms": 238.52466600004118
+    }
+  },
+  {
+    "id": 78,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Deep Learning', 'Neural Networks', 'ML Algorithms', 'Python', 'NumPy', 'Scikit Learn', 'Matplotlib', 'Keras', 'Pandas', 'TensorFlow', 'Seaborn', 'Java', 'ReactJS', 'NodeJS']",
+      "education": "['KTM College, Nashik (affiliated with Lucknow University)', 'SPP University, Pune']",
+      "experience": "['Intern Trainee']",
+      "certifications": "[['Python Programming'], ['Python Programming']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 257.5340000000433,
+      "end_to_end_ms": 257.5362079999759
+    }
+  },
+  {
+    "id": 79,
+    "status": "Failed",
+    "dataset_match_score": "0.45",
+    "ground_truth": {
+      "skills": "['C/C++', 'Java', 'HTML', 'CSS', 'Python', 'Portuguese (fluent)']",
+      "education": "['University of Denver, Denver, CO']",
+      "experience": "['Software Engineer Intern', 'Software Engineer Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 251.16583299997728,
+      "end_to_end_ms": 251.16754199995194
+    }
+  },
+  {
+    "id": 80,
+    "status": "Failed",
+    "dataset_match_score": "0.6",
+    "ground_truth": {
+      "skills": "['account reconciliation', 'accounting', 'accounts payable', 'accruals', 'accrual', 'balance sheet', 'Balance', 'balance sheets', 'bank reconciliation', 'benefits', 'billing', 'budgeting', 'COBOL', 'Computer Programming', 'corporate accounting', 'credit', 'dialysis', 'documentation', 'senior management', 'expense reports', 'finance', 'financial', 'financial reports', 'financial statements', 'fixed assets', 'general ledger', 'insurance', 'letters', 'Access', 'Excel', 'money', 'PowerPoint', 'Word', 'month-end closing', 'month end close', 'primary care', 'processes', 'profit and loss', 'real estate', 'reporting', 'sales', 'SAP', 'settlements', 'tax', 'taxes', 'treasury', 'year-end']",
+      "education": "['Gujarat University', 'Triton College in River Grove, IL']",
+      "experience": "['Accountant', 'Accountant', 'Staff Accountant/ Lease Administrator', 'Assistant Claim Approver', 'Proof Operator', 'Billing Associate', 'Account Receivable Clerk']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 315.22233299998334,
+      "end_to_end_ms": 315.2241250000079
+    }
+  },
+  {
+    "id": 81,
+    "status": "Failed",
+    "dataset_match_score": "0.783333333",
+    "ground_truth": {
+      "skills": "['C', 'R', 'Catia', 'AutoCAD', 'ANSYS', 'Microsoft office', 'Product Project Management', 'GD&T', 'Minitab', 'Kanban', 'Kaizen', 'FMEA', 'development', 'Toyota production systems', 'APQP', 'PPAP', '8D', '5 why', \"KPI's\", 'Reliability SAE Standards', 'Vehicle ergonomics', 'DVP&R', 'QCC', 'CNC engineering', 'Programming', 'anatomy', 'benchmarking', 'lean manufacturing', 'manufacturing process', 'cost analysis', 'packaging', 'process engineering', 'Product Development', 'surveys', 'validation', 'welding']",
+      "education": "['University of Michigan Dearborn', 'Visvesvaraya Technological University']",
+      "experience": "['Engineering Assistant', 'Engineer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 257.5787920000148,
+      "end_to_end_ms": 257.5808749999851
+    }
+  },
+  {
+    "id": 82,
+    "status": "Failed",
+    "dataset_match_score": "0.816666667",
+    "ground_truth": {
+      "skills": "['Statistical Modeling', 'Natural Language Processing', 'Text Mining', 'Python', 'PySpark', 'Microsoft Azure', 'Azure Databricks', 'Azure Data Factory', 'SQL', 'Machine Learning Engineer', 'Data Analyst']",
+      "education": "['PRM College of Engineering']",
+      "experience": "['Software Developer (Machine Learning)']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 252.97766599996248,
+      "end_to_end_ms": 252.9800830000313
+    }
+  },
+  {
+    "id": 83,
+    "status": "Failed",
+    "dataset_match_score": "0.8166666666666668",
+    "ground_truth": {
+      "skills": "['Microsoft Word/Excel', 'Great Plains Dynamics', 'BI360 (BusinessIntelligence Tool)', 'Keane Care']",
+      "education": "['MERCY COLLEGE']",
+      "experience": "['Senior Accountant', 'Senior Accountant', 'Senior Accountant', 'Controller']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 269.2092910000356,
+      "end_to_end_ms": 269.2118340000161
+    }
+  },
+  {
+    "id": 84,
+    "status": "Failed",
+    "dataset_match_score": "0.8266666666666667",
+    "ground_truth": {
+      "skills": "['streamline', 'approach', 'balance sheet', 'bonds', 'budgeting', 'business development', 'cash flow', 'clinical research', 'clinical trials', 'com', 'consulting', 'corporate finance', 'CRM', 'database', 'email', 'English', 'equities', 'Fast', 'financials', 'financing', 'financial', 'fundraising', 'funds', 'graphical user interface', 'information systems', 'Innovation', 'inventory', 'marketing', 'network', 'neural', 'next', 'presentations', 'Speaker', 'sales', 'scientific', 'Spanish', 'strategy', 'strategic', 'websites']",
+      "education": "['McCallum Graduate School at Bentley University', 'Bentley University']",
+      "experience": "['VP of Business Development', 'Co-Founder VP of Business Development', 'N/A']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 264.62550000002375,
+      "end_to_end_ms": 264.62745799997356
+    }
+  },
+  {
+    "id": 85,
+    "status": "Failed",
+    "dataset_match_score": "0.513333333",
+    "ground_truth": {
+      "skills": "['Django', 'Python', 'Relational databases', 'RestAPI', 'Github', 'Jira', 'PostgreSQL', 'Software development', 'Debugging', 'Machine learning', 'Natural language Processing', 'Artificial Intelligence', 'Data Analysis', 'Docker', 'Tornado', 'Software Developer', 'Project Management']",
+      "education": "['Dr. Virendra Swaroop Institute of Computer Studies, Kanpur', 'Pranveer Singh Institute of Technology, Kanpur']",
+      "experience": "['Software Developer']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 598.883332999947,
+      "end_to_end_ms": 598.8852499999921
+    }
+  },
+  {
+    "id": 86,
+    "status": "Failed",
+    "dataset_match_score": "0.5066666666666667",
+    "ground_truth": {
+      "skills": "['accounting', 'balance sheet', 'budgets', 'client', 'clients', 'derivatives', 'drafting', 'equity', 'financial', 'financial accounting', 'financial statements', 'fixed assets', 'Funds', 'Government', 'Information Technology', 'inventory', 'investments', 'ledger', 'MA', 'Microsoft Excel', 'natural', 'page', 'payables', 'processes', 'programming', 'Real Estate', 'research', 'sales', 'scheme', 'telephone', 'writing skills']",
+      "education": "['EMORY UNIVERSITY, Goizueta Business School']",
+      "experience": "['Senior Accountant', 'Associate Fund Controller', 'Advisory, Forensic and Audit Associate', 'Accounting Tutor']",
+      "certifications": "[['accounting'], ['fraud detection']]"
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 255.90441700001247,
+      "end_to_end_ms": 255.90695800003596
+    }
+  },
+  {
+    "id": 87,
+    "status": "Failed",
+    "dataset_match_score": "0.533333333",
+    "ground_truth": {
+      "skills": "['Business Analyst', 'Data Analytics', 'Data Cleansing', 'Business Analysis', 'Risk Analysis', 'Statistical Analysis', 'Deep Learning', 'Machine Learning', 'Python', 'Numpy']",
+      "education": "['PGG College Mysore']",
+      "experience": "['SDE and Business Analyst Trainee']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 323.1377499999944,
+      "end_to_end_ms": 323.1398339999723
+    }
+  },
+  {
+    "id": 88,
+    "status": "Failed",
+    "dataset_match_score": "0.85",
+    "ground_truth": {
+      "skills": "['Data Science', 'Data Analysis', 'Data Structures', 'Data Warehousing', 'Data Visualization', 'Data Mining', 'Machine Learning', 'Artificial Intelligence', 'Linear Regression', 'MongoDB', 'Python', 'Django', 'Java', 'SQL', 'C++']",
+      "education": "['Anna University', 'Imarticus Learning']",
+      "experience": "['Junior Research Fellow']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 255.12308299995493,
+      "end_to_end_ms": 255.1243329999852
+    }
+  },
+  {
+    "id": 89,
+    "status": "Failed",
+    "dataset_match_score": "0.55",
+    "ground_truth": {
+      "skills": "['Embedded Software Development', 'Embedded Systems', 'Project Management', 'Change Management', 'Defect Management', 'Machine Learning', 'Unit Testing', 'C++', 'GIT', 'Data Structures', 'Python']",
+      "education": "['Jawaharlal Nehru Technological University (JNTU)', 'Manipal University']",
+      "experience": "['Product Engineer Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 258.7266660000314,
+      "end_to_end_ms": 258.72824999998556
+    }
+  },
+  {
+    "id": 90,
+    "status": "Failed",
+    "dataset_match_score": "0.716666667",
+    "ground_truth": {
+      "skills": "['Machine Learning', 'Cloud Architecture', 'Conversational AI', 'Natural Language Processing', 'Transformers', 'HuggingFace', 'RNN', 'LSTM', 'GRU']",
+      "education": "['SJU College, Karnataka']",
+      "experience": "['Associate System Engineer Intern']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 240.23762500000885,
+      "end_to_end_ms": 240.23924999998417
+    }
+  },
+  {
+    "id": 91,
+    "status": "Failed",
+    "dataset_match_score": "0.583333333",
+    "ground_truth": {
+      "skills": "['Data Analytics', 'Natural Language Processing', 'Production Engineering', 'Production Analytics', 'Tableau', 'Machine Learning', 'Python', 'NLTK']",
+      "education": "['SMV Institute of Technology']",
+      "experience": "['Assistant Analyst']",
+      "certifications": ""
+    },
+    "gemini_response": null,
+    "error": "AI processing quota exceeded. Please try again later or check your API keys.",
+    "metrics": {
+      "gemini_latency_ms": 291.2080410000053,
+      "end_to_end_ms": 291.2099579999922
+    }
+  },
+  {
+    "id": 92,
+    "status": "Pending",
+    "dataset_match_score": "0.383333333"
+  },
+  {
+    "id": 93,
+    "status": "Pending",
+    "dataset_match_score": "0.85"
+  },
+  {
+    "id": 94,
+    "status": "Pending",
+    "dataset_match_score": "0.716666667"
+  },
+  {
+    "id": 95,
+    "status": "Pending",
+    "dataset_match_score": "0.726666667"
+  },
+  {
+    "id": 96,
+    "status": "Pending",
+    "dataset_match_score": "0.55"
+  },
+  {
+    "id": 97,
+    "status": "Pending",
+    "dataset_match_score": "0.783333333"
+  },
+  {
+    "id": 98,
+    "status": "Pending",
+    "dataset_match_score": "0.85"
+  },
+  {
+    "id": 99,
+    "status": "Pending",
+    "dataset_match_score": "0.42"
+  }
+]

@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     full_name TEXT NOT NULL,
     email TEXT NOT NULL,
     location TEXT,
-    current_role TEXT,
+    "current_role" TEXT,
     years_of_experience INTEGER,
     preferred_job_title TEXT,
     skills TEXT[],

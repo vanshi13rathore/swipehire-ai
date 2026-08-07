@@ -34,6 +34,15 @@ CREATE POLICY "Users can delete own goals" ON career_goals FOR DELETE USING (aut
 CREATE POLICY "Users can manage own shares" ON dashboard_shares FOR ALL USING (auth.uid() = user_id);
 CREATE POLICY "Anyone can view active shares by token" ON dashboard_shares FOR SELECT USING (is_active = true);
 
+-- Create function to update modified column
+CREATE OR REPLACE FUNCTION update_career_goals_modtime()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
 -- Create triggers
 CREATE TRIGGER handle_updated_at_goals BEFORE UPDATE ON career_goals
-  FOR EACH ROW EXECUTE PROCEDURE moddatetime (updated_at);
+  FOR EACH ROW EXECUTE FUNCTION update_career_goals_modtime();

@@ -28,6 +28,15 @@ CREATE POLICY "Users can delete own career chats"
   ON career_chats FOR DELETE
   USING (auth.uid() = user_id);
 
+-- Create function to update modified column
+CREATE OR REPLACE FUNCTION update_career_chats_modtime()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
 -- Create trigger for updated_at
 CREATE TRIGGER handle_updated_at BEFORE UPDATE ON career_chats
-  FOR EACH ROW EXECUTE PROCEDURE moddatetime (updated_at);
+  FOR EACH ROW EXECUTE FUNCTION update_career_chats_modtime();

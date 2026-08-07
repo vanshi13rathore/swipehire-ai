@@ -48,11 +48,25 @@ SwipeHire utilizes a secure, serverless architecture optimized for edge networks
 ```mermaid
 graph TD
     Client[Client Browser] -->|HTTP Requests| Middleware[Next.js Edge Middleware]
-    Middleware -->|Validates Session Cookie| Auth[Supabase Auth]
-    Middleware -->|Routes to| AppRouter[Next.js App Router]
-    AppRouter -->|Server Actions / API| SupabaseDB[(Supabase PostgreSQL)]
-    AppRouter -->|Streams AI Prompts| Gemini[Google Gemini API]
-    AppRouter -->|Fetches Live Jobs| Remotive[Remotive Jobs API]
+    Middleware -->|Validates Session| Auth[Supabase Auth]
+    
+    %% AI Pipeline
+    PDF[Resume PDF] -->|Upload & Parse| Text[PDF Text Extraction]
+    Text -->|Raw Text| Gemini[Gemini 2.5 Flash]
+    Gemini -->|Zero-shot Extraction| JSON[Structured Resume JSON]
+    
+    %% Processing Engines
+    JSON --> ATS[Hybrid ATS Engine]
+    JSON --> DNA[Career DNA Analysis]
+    JSON --> Match[Job Matcher]
+    
+    %% Database and Routing
+    ATS --> DB[(Supabase DB)]
+    DNA --> DB
+    Match --> DB
+    DB --> AppRouter[Next.js App Router]
+    
+    AppRouter -->|Renders UI| Client
 ```
 
 *For more details, see [Architecture Documentation](docs/architecture.md).*

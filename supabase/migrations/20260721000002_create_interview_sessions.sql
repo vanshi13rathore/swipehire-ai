@@ -35,6 +35,15 @@ CREATE POLICY "Users can delete own interview sessions"
   ON interview_sessions FOR DELETE
   USING (auth.uid() = user_id);
 
+-- Create function to update modified column
+CREATE OR REPLACE FUNCTION update_interview_sessions_modtime()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
 -- Create trigger for updated_at
 CREATE TRIGGER handle_updated_at BEFORE UPDATE ON interview_sessions
-  FOR EACH ROW EXECUTE PROCEDURE moddatetime (updated_at);
+  FOR EACH ROW EXECUTE FUNCTION update_interview_sessions_modtime();

@@ -111,12 +111,12 @@ export function DashboardView({ data, insights }: Props) {
               <div className="space-y-4">
                 <div>
                   <div className="flex flex-wrap gap-2">
-                    {insights.strengths.map((s, i) => <span key={i} className="px-2 py-1 bg-success/10 text-success text-xs rounded-md border border-success/20">{s}</span>)}
+                    {(insights.strengths || []).map((s, i) => <span key={i} className="px-2 py-1 bg-success/10 text-success text-xs rounded-md border border-success/20">{s}</span>)}
                   </div>
                 </div>
                 <div>
                   <div className="flex flex-wrap gap-2">
-                    {insights.weakestAreas.map((w, i) => <span key={i} className="px-2 py-1 bg-destructive/10 text-destructive text-xs rounded-md border border-destructive/20">{w}</span>)}
+                    {(insights.weakestAreas || []).map((w, i) => <span key={i} className="px-2 py-1 bg-destructive/10 text-destructive text-xs rounded-md border border-destructive/20">{w}</span>)}
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export function DashboardView({ data, insights }: Props) {
             <div>
               <h4 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Learning Roadmap</h4>
               <div className="space-y-4 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-                {insights.learningRoadmap.map((step, i) => (
+                {(insights.learningRoadmap || []).map((step, i) => (
                   <div key={i} className="relative flex items-start gap-4">
                     <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] font-bold text-primary-foreground z-10 shrink-0">
                       {step.step}
@@ -139,11 +139,11 @@ export function DashboardView({ data, insights }: Props) {
               </div>
             </div>
             
-            {insights.recommendedJobs.length > 0 && (
+            {(insights.recommendedJobs || []).length > 0 && (
               <div>
                 <h4 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Recommended Jobs</h4>
                 <div className="space-y-3">
-                  {insights.recommendedJobs.map((job, i) => (
+                  {(insights.recommendedJobs || []).map((job, i) => (
                     <div key={i} className="text-sm border border-border p-3 rounded-xl bg-secondary/10">
                       <p className="font-semibold">{job.title}</p>
                       <p className="text-muted-foreground text-xs mt-1">{job.reason}</p>

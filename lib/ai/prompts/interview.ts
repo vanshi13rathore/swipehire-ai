@@ -1,85 +1,110 @@
-import type { InterviewQuestion } from "../../supabase/types";
+import type { InterviewMode, InterviewTurn } from "../../supabase/types";
 
-export function buildGenerateQuestionsPrompt(
+export function buildFirstQuestionPrompt(
+  mode: InterviewMode,
   role: string,
   company: string | null,
   difficulty: string,
   jobDescription: string | null,
   context: Record<string, unknown>
 ): string {
-  return `You are an expert technical interviewer for ${company || 'a top tier company'}.
-Your task is to generate 8-12 tailored interview questions for a candidate applying for the role of "${role}" with difficulty "${difficulty}".
+  return `You are a Senior Staff Interviewer at a top-tier FAANG company (${company || 'Google/Microsoft/Amazon'}).
+Your task is to conduct a professional "${mode}" interview for a candidate applying for "${role}" (Difficulty: ${difficulty}).
 
-Context about the candidate:
-Resume: ${context.resumeData ? JSON.stringify(context.resumeData) : 'Not provided'}
-${jobDescription ? `Job Description: ${jobDescription}` : ''}
+Candidate Resume Context:
+${context.resumeData ? JSON.stringify(context.resumeData) : 'Not provided'}
+
+${jobDescription ? `Job Description:\n${jobDescription}` : ''}
 
 Instructions:
-1. Provide a mix of Behavioral, Technical, Resume-based, and Job-specific questions.
-2. The difficulty should heavily influence the depth of the questions.
-3. Keep the questions realistic and challenging.
-4. Output strictly a JSON array of questions, where each question has an "id" (unique string), "text" (the question itself), and "category" (one of 'Behavioral', 'Technical', 'Resume-based', 'Job-specific').
+1. Start the interview by introducing yourself briefly as Sarah, a Senior Software Engineer at the company.
+2. The question must be highly tailored to the candidate's resume and the selected Interview Mode (${mode}).
+3. Ask the very first question. Make it sound like a natural, conversational video call opening.
 
-Example output:
-[
-  {
-    "id": "q1",
-    "text": "Tell me about a time you resolved a conflict within your engineering team.",
-    "category": "Behavioral"
-  },
-  {
-    "id": "q2",
-    "text": "Explain how you would design a rate limiter.",
-    "category": "Technical"
-  }
-]
-
-Respond ONLY with valid JSON array.`;
+Output exactly a JSON object:
+{
+  "question": "The interview question here"
+}
+Respond ONLY with the valid JSON object.`;
 }
 
-export function buildEvaluateInterviewPrompt(
+export function buildFollowUpPrompt(
+  mode: InterviewMode,
   role: string,
-  questions: InterviewQuestion[],
-  answers: Record<string, string>
+  difficulty: string,
+  transcript: InterviewTurn[],
+  latestAnswer: string
 ): string {
-  return `You are an expert technical interviewer and hiring manager.
-The candidate has just finished their mock interview for the role of "${role}".
-Your task is to evaluate their answers and provide comprehensive feedback.
+  const previousTurns = transcript.map((t, i) => `Turn ${i + 1}:\nInterviewer: ${t.question}\nCandidate: ${t.answer}`).join("\n\n");
+  
+  const lastQuestion = transcript.length > 0 ? transcript[transcript.length - 1].question : "N/A";
 
-Interview Transcript:
-${questions.map((q) => `
-Question [${q.category}]: ${q.text}
-Answer: ${answers[q.id] || '(Skipped)'}
-`).join("\n")}
+  return `You are a Senior Staff Interviewer conducting a "${mode}" interview for "${role}" (Difficulty: ${difficulty}).
+
+Here is the transcript of the interview so far:
+${previousTurns}
+
+The interviewer just asked:
+"${lastQuestion}"
+
+The candidate just answered:
+"${latestAnswer}"
 
 Instructions:
-1. Evaluate the candidate on Communication, Technical Depth, Confidence, Problem Solving, STAR format usage (for behavioral), Grammar, and Professionalism.
-2. Score each category from 0 to 100.
-3. Calculate an overall score (0 to 100).
-4. Identify strengths and weaknesses.
-5. Highlight missed concepts and provide actionable suggested improvements.
-6. Provide specific, constructive feedback for EACH question.
-7. Output strictly a JSON object matching this structure:
+1. Evaluate the candidate's latest answer. Score their Technical Ability, Communication, Confidence, and Problem Solving from 0-100.
+2. Explain what was missing or could be improved in the feedback.
+3. Provide the ideal, FAANG-level answer.
+4. Generate ONE conversational follow-up question acting as Sarah. React naturally to their answer (e.g. "That's an interesting approach. What about...").
 
+Output exactly a JSON object:
+{
+  "evaluation": {
+    "feedback": "Short feedback on what they did well and what was missing.",
+    "idealAnswer": "A concise example of what a perfect answer would look like.",
+    "metrics": {
+      "technical": 85,
+      "communication": 90,
+      "confidence": 80,
+      "problemSolving": 75
+    }
+  },
+  "nextQuestion": "Your conversational response and next question for the candidate."
+}
+Respond ONLY with the valid JSON object.`;
+}
+
+export function buildFinalEvaluationPrompt(
+  mode: InterviewMode,
+  role: string,
+  transcript: InterviewTurn[]
+): string {
+  const fullTranscript = transcript.map((t, i) => `Turn ${i + 1}:\nInterviewer: ${t.question}\nCandidate: ${t.answer}`).join("\n\n");
+
+  return `You are a Senior Staff Hiring Committee Member at a top-tier FAANG company.
+Review this transcript for a "${mode}" interview for the "${role}" position.
+
+Transcript:
+${fullTranscript}
+
+Instructions:
+1. Evaluate the candidate across these FAANG rubrics: Communication, Technical Accuracy, Problem Solving, Confidence, and Depth.
+2. Score each from 0 to 100. Calculate an overall average score.
+3. Identify 3 strengths and 3 weaknesses.
+4. Provide a 3-step concrete improvement plan.
+5. Provide a final Hiring Recommendation: "Strong Hire", "Hire", "Leaning Hire", "Leaning No Hire", "No Hire", or "Strong No Hire".
+
+Output exactly a JSON object matching this structure:
 {
   "communication": 85,
-  "technicalDepth": 75,
-  "confidence": 80,
-  "problemSolving": 70,
-  "starFormat": 60,
-  "grammar": 90,
-  "professionalism": 95,
+  "technicalAccuracy": 75,
+  "problemSolving": 80,
+  "confidence": 90,
+  "depth": 70,
   "overallScore": 80,
-  "strengths": ["Clear communication", "Good understanding of React"],
-  "weaknesses": ["Lacked depth in system design", "Did not use STAR format"],
-  "missedConcepts": ["Rate limiting algorithms", "Database indexing"],
-  "suggestedImprovements": ["Practice STAR method for behavioral questions", "Review basic system design patterns"],
-  "recommendedResources": ["Grokking the System Design Interview", "STAR method guide"],
-  "questionFeedback": {
-    "q1": "Great example, but try to focus more on your specific impact rather than the team's.",
-    "q2": "You missed the token bucket algorithm. Review rate limiting strategies."
-  }
+  "strengths": ["Clear communication", "Good grasp of React"],
+  "weaknesses": ["Lacked depth in system design", "Missed edge cases"],
+  "improvementPlan": ["Practice designing distributed systems", "Review rate limiting", "Use STAR method"],
+  "hiringRecommendation": "Leaning Hire"
 }
-
 Respond ONLY with the valid JSON object.`;
 }

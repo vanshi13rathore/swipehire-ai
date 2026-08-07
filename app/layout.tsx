@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SwipeHire - Swipe Right. Get Hired.",
     description: "AI-powered career matchmaking inspired by dating apps.",
-    url: "https://swipehire.example.com",
+    url: "https://swipehire.vercel.app",
     siteName: "SwipeHire",
     type: "website",
   },

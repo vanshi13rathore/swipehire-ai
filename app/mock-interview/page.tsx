@@ -10,10 +10,17 @@ export const metadata = {
 
 export default async function MockInterviewPage() {
   let sessions: InterviewSession[] = [];
+  let error;
   try {
-    sessions = await getInterviewSessions().catch(() => []);
-  } catch (error) {
-    console.error(error);
+    const allSessions = await getInterviewSessions().catch(() => []);
+    // Filter out corrupted sessions that were created without turns (e.g. during API quota errors)
+    sessions = allSessions.filter(s => s.turns && s.turns.length > 0);
+  } catch (err) {
+    console.error(err);
+    error = err;
+  }
+  
+  if (error) {
     redirect("/dashboard");
   }
   

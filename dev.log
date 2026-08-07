@@ -1,0 +1,42 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by process 3443, using available port 3001 instead.
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://172.25.221.102:3001
+- Environments: .env.local
+✓ Ready in 394ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/vanshikarathore/Desktop/SwipeHire/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/vanshikarathore/Desktop/SwipeHire/frontend/package-lock.json
+
+⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+- Experiments (use with caution):
+  · clientTraceMetadata
+
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /signup 200 in 2.5s (next.js: 2.0s, proxy.ts: 188ms, application-code: 272ms)
+ GET /signup 200 in 68ms (next.js: 11ms, proxy.ts: 8ms, application-code: 50ms)
+ POST /api/auth/signup 404 in 589ms (next.js: 520ms, proxy.ts: 14ms, application-code: 55ms)
+ GET /signup 200 in 91ms (next.js: 9ms, proxy.ts: 5ms, application-code: 77ms)
+ GET /signup 200 in 55ms (next.js: 4ms, proxy.ts: 8ms, application-code: 43ms)
+ GET /signup 200 in 50ms (next.js: 2ms, proxy.ts: 12ms, application-code: 36ms)
+ GET /login 200 in 1044ms (next.js: 571ms, proxy.ts: 422ms, application-code: 51ms)
+ GET /signup 200 in 73ms (next.js: 9ms, proxy.ts: 9ms, application-code: 55ms)
+ GET /login 200 in 809ms (next.js: 5ms, proxy.ts: 778ms, application-code: 26ms)
+ GET /profile 200 in 1897ms (next.js: 1531ms, proxy.ts: 328ms, application-code: 38ms)
+ GET /signup 200 in 64ms (next.js: 8ms, proxy.ts: 20ms, application-code: 36ms)
+ GET /login 200 in 446ms (next.js: 7ms, proxy.ts: 404ms, application-code: 35ms)
+ GET /profile 200 in 346ms (next.js: 5ms, proxy.ts: 321ms, application-code: 20ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /mock-interview 200 in 3.8s (next.js: 1431ms, proxy.ts: 931ms, application-code: 1410ms)
+ POST /mock-interview 200 in 10.1s (next.js: 62ms, proxy.ts: 771ms, application-code: 9.3s)
+  └─ ƒ setupInterviewAction("Technical", "Software Engineer", "", "Medium", "") in 9164ms app/actions/interview.ts
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /mock-interview/3f35354a-18c0-4eac-9027-58461fa3b2e2?mic=true 200 in 3.7s (next.js: 1984ms, proxy.ts: 710ms, application-code: 1033ms)

@@ -1,5 +1,5 @@
-/* eslint-disable */
-/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-unused-vars */
+ 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 
 const env = fs.readFileSync('.env.local', 'utf-8');

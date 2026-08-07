@@ -8,6 +8,7 @@ import { AlertCircle, Flame, Rocket, DollarSign, BookOpen, Zap } from "lucide-re
 
 import { SmartRecommendationCard } from "@/components/jobs/smart-recommendation-card";
 import { AiCareerInsights } from "@/components/jobs/ai-career-insights";
+import { JobDiscoveryClient } from "@/components/jobs/job-discovery-client";
 import type { Job } from "@/lib/ai/types";
 
 export const metadata = {
@@ -49,6 +50,7 @@ export default async function JobsPage() {
   let errorMsg: string | null = null;
   let hasResume = false;
 
+  let allJobs: JobWithCategory[] = [];
   try {
     const realJobs = await getJobsServer();
     
@@ -63,40 +65,32 @@ export default async function JobsPage() {
 
     if (resumeVersion && resumeVersion.resume_data) {
        hasResume = true;
-       // Generate insight
-       // In a real app, you would cache this in the DB as well.
        weeklyInsight = await generateWeeklyInsight(resumeVersion.resume_data);
 
-       // Process and categorize
-       const processedJobs = realJobs.map(job => {
+       allJobs = realJobs.map(job => {
          const scores = calculateHeuristicMatch(resumeVersion.resume_data, job as unknown as Job);
          const category = categorizeJob(job as unknown as Job, scores);
-         
-         return {
-           ...job,
-           heuristicScores: scores,
-           category
-         };
+         return { ...job, heuristicScores: scores, category } as JobWithCategory;
        });
 
-       processedJobs.forEach(job => {
+       allJobs.forEach(job => {
          const cat = job.category as keyof CategorizedJobs;
          if (categorizedJobs[cat]) {
            categorizedJobs[cat].push(job);
          }
        });
 
-       // Sort each category by overall score descending
        (Object.keys(categorizedJobs) as Array<keyof CategorizedJobs>).forEach(key => {
          categorizedJobs[key].sort((a, b) => b.heuristicScores.overall_score - a.heuristicScores.overall_score);
        });
     } else {
-       // Just put everything in Quick Apply if no resume is found
-       categorizedJobs["Quick Apply"] = realJobs.map(job => ({
+       allJobs = realJobs.map(job => ({
          ...job,
          heuristicScores: { overall_score: 0, skills_score: 0, experience_score: 0, education_score: 0, keyword_score: 0 },
          category: "Quick Apply"
-       }));
+       })) as JobWithCategory[];
+       
+       categorizedJobs["Quick Apply"] = [...allJobs];
     }
   } catch (err: unknown) {
     console.error("Failed to load jobs", err);
@@ -135,45 +129,11 @@ export default async function JobsPage() {
           {hasResume && <AiCareerInsights insight={weeklyInsight} />}
         </div>
 
-        {/* Categories */}
-        <div className="space-y-16">
-          
-          <JobCategorySection 
-            title="Best Matches" 
-            icon={<Flame className="w-6 h-6 text-orange-500" />}
-            jobs={categorizedJobs["Best Matches"]}
-            categoryName="Best Matches"
-          />
-
-          <JobCategorySection 
-            title="High Growth" 
-            icon={<Rocket className="w-6 h-6 text-indigo-500" />}
-            jobs={categorizedJobs["High Growth"]}
-            categoryName="High Growth"
-          />
-
-          <JobCategorySection 
-            title="Highest Salary" 
-            icon={<DollarSign className="w-6 h-6 text-emerald-500" />}
-            jobs={categorizedJobs["Highest Salary"]}
-            categoryName="Highest Salary"
-          />
-
-          <JobCategorySection 
-            title="Best Learning Opportunity" 
-            icon={<BookOpen className="w-6 h-6 text-blue-500" />}
-            jobs={categorizedJobs["Best Learning Opportunity"]}
-            categoryName="Best Learning Opportunity"
-          />
-
-          <JobCategorySection 
-            title="Quick Apply" 
-            icon={<Zap className="w-6 h-6 text-yellow-500" />}
-            jobs={categorizedJobs["Quick Apply"]}
-            categoryName="Quick Apply"
-          />
-
-        </div>
+        {/* Job Discovery Client */}
+        <JobDiscoveryClient 
+          categorizedJobs={categorizedJobs as unknown as Record<string, JobWithCategory[]>} 
+          allJobs={allJobs} 
+        />
       </div>
     </main>
   );

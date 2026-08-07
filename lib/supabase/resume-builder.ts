@@ -63,18 +63,14 @@ export async function createResume(title: string, resumeData: ResumeData = defau
     throw new Error("User not authenticated");
   }
 
-  const { data, error } = await supabase
-    .from("resume_versions")
-    .insert([{
-      user_id: userData.user.id,
-      title,
-      resume_data: resumeData,
-      is_default: isDefault,
-    }])
-    .select()
-    .single();
+  const { data, error } = await supabase.rpc('create_resume_atomic', {
+    p_title: title,
+    p_resume_data: resumeData,
+    p_is_default: isDefault
+  });
 
   if (error) {
+    console.error(`[UPLOAD ERROR] Transaction failed:`, error);
     throw error;
   }
 
@@ -130,12 +126,12 @@ export async function setDefaultResume(id: string): Promise<void> {
     throw new Error("User not authenticated");
   }
 
-  // Set all others to false
-  await supabase
-    .from("resume_versions")
-    .update({ is_default: false })
-    .eq("user_id", userData.user.id);
+  const { error } = await supabase.rpc('set_default_resume_atomic', {
+    p_resume_id: id
+  });
 
-  // Set target to true
-  await updateResume(id, { is_default: true });
+  if (error) {
+    console.error(`[ATOMIC DEFAULT ERROR] Transaction failed for setting default:`, error);
+    throw error;
+  }
 }

@@ -102,27 +102,35 @@ export interface CareerChat {
   updated_at: string;
 }
 
-export interface InterviewQuestion {
+export type InterviewMode = 'HR' | 'Technical' | 'Behavioral' | 'System Design' | 'DSA' | 'AI/ML' | 'Resume Deep Dive';
+
+export interface InterviewTurn {
   id: string;
-  text: string;
-  category: 'Behavioral' | 'Technical' | 'Resume-based' | 'Job-specific';
+  question: string;
+  answer: string;
+  evaluation?: {
+    feedback: string;
+    idealAnswer: string;
+    metrics: {
+      technical: number;
+      communication: number;
+      confidence: number;
+      problemSolving: number;
+    };
+  };
 }
 
 export interface InterviewFeedback {
   communication: number;
-  technicalDepth: number;
-  confidence: number;
+  technicalAccuracy: number;
   problemSolving: number;
-  starFormat: number;
-  grammar: number;
-  professionalism: number;
+  confidence: number;
+  depth: number;
   overallScore: number;
   strengths: string[];
   weaknesses: string[];
-  missedConcepts: string[];
-  suggestedImprovements: string[];
-  recommendedResources: string[];
-  questionFeedback: Record<string, string>;
+  improvementPlan: string[];
+  hiringRecommendation: "Strong Hire" | "Hire" | "Leaning Hire" | "Leaning No Hire" | "No Hire" | "Strong No Hire";
 }
 
 export interface InterviewSession {
@@ -130,12 +138,11 @@ export interface InterviewSession {
   user_id: string;
   role: string;
   company: string | null;
+  mode: InterviewMode;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   job_description: string | null;
-  questions: InterviewQuestion[];
-  answers: Record<string, string>;
+  turns: InterviewTurn[];
   feedback: InterviewFeedback | null;
-  overall_score: number | null;
   status: 'Not Started' | 'In Progress' | 'Completed';
   created_at: string;
   updated_at: string;
@@ -182,6 +189,13 @@ export interface ResumeData {
   }>;
   ai_analysis?: {
     atsScore: number;
+    hybridAtsBreakdown?: {
+      sectionCompleteness: number;
+      quantifiableAchievements: number;
+      formattingConsistency: number;
+      llmQualitative: number;
+      explanation: string[];
+    };
     extractedSkills: string[];
     missingSkills: string[];
     summary: string;

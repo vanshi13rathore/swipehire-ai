@@ -6,6 +6,7 @@ import { Target, TrendingUp, PieChart as PieChartIcon, Eye, Briefcase, PhoneCall
 import type { Application, InterviewSession } from "@/lib/supabase/types";
 import { Button } from "@/components/shared";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -100,11 +101,12 @@ export const DashboardCharts = React.memo(function DashboardCharts({ data }: Pro
       const fb = i.feedback;
       if (!fb) return acc;
       acc.Communication = (acc.Communication || 0) + (fb.communication || 0);
-      acc.Technical = (acc.Technical || 0) + (fb.technicalDepth || 0);
+      acc.Technical = (acc.Technical || 0) + (fb.technicalAccuracy || 0);
       acc.Confidence = (acc.Confidence || 0) + (fb.confidence || 0);
       acc['Problem Solving'] = (acc['Problem Solving'] || 0) + (fb.problemSolving || 0);
+      acc.Depth = (acc.Depth || 0) + (fb.depth || 0);
       return acc;
-    }, {});
+    }, {} as Record<string, number>);
 
     return Object.entries(totals).map(([subject, total]) => ({
       subject,
@@ -168,18 +170,18 @@ export const DashboardCharts = React.memo(function DashboardCharts({ data }: Pro
           {appsOverTime.some(d => d.count > 0) ? (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={appsOverTime} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" opacity={0.5} />
-                <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} allowDecimals={false} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" opacity={0.5} />
+                <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }} allowDecimals={false} />
                 <Tooltip 
-                  cursor={{ fill: 'hsl(var(--secondary))', opacity: 0.4 }}
-                  contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                  itemStyle={{ color: 'hsl(var(--foreground))', fontWeight: 'bold' }}
-                  labelStyle={{ color: 'hsl(var(--muted-foreground))', marginBottom: '4px' }}
+                  cursor={{ fill: 'var(--secondary)', opacity: 0.4 }}
+                  contentStyle={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                  itemStyle={{ color: 'var(--foreground)', fontWeight: 'bold' }}
+                  labelStyle={{ color: 'var(--muted-foreground)', marginBottom: '4px' }}
                 />
-                <Bar dataKey="count" name="Applications" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} maxBarSize={40}>
+                <Bar dataKey="count" name="Applications" fill="var(--primary)" radius={[4, 4, 0, 0]} maxBarSize={40}>
                   {appsOverTime.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.count > 0 ? "hsl(var(--primary))" : "hsl(var(--secondary))"} />
+                    <Cell key={`cell-${index}`} fill={entry.count > 0 ? "var(--primary)" : "var(--secondary)"} />
                   ))}
                 </Bar>
               </BarChart>
@@ -247,19 +249,21 @@ export const DashboardCharts = React.memo(function DashboardCharts({ data }: Pro
                 <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="70%" data={interviewScores}>
-                      <PolarGrid stroke="hsl(var(--border))" />
-                      <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: 'hsl(var(--foreground))', fontWeight: 500 }} />
+                      <PolarGrid stroke="var(--border)" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: 'var(--foreground)', fontWeight: 500 }} />
                       <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                      <Radar name="Score" dataKey="A" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.5} />
+                      <Radar name="Score" dataKey="A" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.5} />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '8px' }}
+                        contentStyle={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)', borderRadius: '8px' }}
                       />
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>
-                <Button variant="outline" className="mt-4 w-full" onClick={() => router.push('/interview')}>
-                  Practice Again
-                </Button>
+                <Link href="/mock-interview" className="mt-4 w-full block">
+                  <Button variant="outline" className="w-full relative z-10">
+                    Practice Again
+                  </Button>
+                </Link>
               </>
             ) : (
               <div className="flex-1 flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-primary/20 bg-primary/5 rounded-2xl">
@@ -276,9 +280,11 @@ export const DashboardCharts = React.memo(function DashboardCharts({ data }: Pro
                   <li>• Behavioral Interview</li>
                   <li>• Resume-Based Interview</li>
                 </ul>
-                <Button size="lg" className="w-full font-bold shadow-lg shadow-primary/20" onClick={() => router.push('/interview')}>
-                  Start Mock Interview
-                </Button>
+                <Link href="/mock-interview" className="w-full block">
+                  <Button size="lg" className="w-full font-bold shadow-lg shadow-primary/20 relative z-10">
+                    Start Mock Interview
+                  </Button>
+                </Link>
               </div>
             )}
           </div>

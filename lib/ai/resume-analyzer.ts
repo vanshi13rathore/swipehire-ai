@@ -7,6 +7,98 @@ export type AnalyzeResumeResponse =
   | { success: true; data: ResumeData }
   | { success: false; error: string };
 
+function calculateHybridAtsScore(resumeData: ResumeData): {
+  score: number;
+  breakdown: NonNullable<NonNullable<ResumeData["ai_analysis"]>["hybridAtsBreakdown"]>;
+} {
+  let sectionCompleteness = 0;
+  let quantifiableAchievements = 0;
+  let formattingConsistency = 0;
+  let llmQualitative = 0;
+  const explanation: string[] = [];
+
+  // 1. Section Completeness (Max 30)
+  if (resumeData.summary && resumeData.summary.length > 20) {
+    sectionCompleteness += 10;
+  } else {
+    explanation.push("- Missing or too short professional summary.");
+  }
+  
+  if (resumeData.experience && resumeData.experience.length > 0) {
+    sectionCompleteness += 10;
+  } else {
+    explanation.push("- Missing work experience section.");
+  }
+  
+  if (resumeData.education && resumeData.education.length > 0) {
+    sectionCompleteness += 10;
+  } else {
+    explanation.push("- Missing education section.");
+  }
+
+  // 2. Quantifiable Achievements (Max 20)
+  const numbersRegex = /\\d+/g;
+  let metricCount = 0;
+  resumeData.experience?.forEach(exp => {
+    const matches = exp.description.match(numbersRegex);
+    if (matches) metricCount += matches.length;
+  });
+  if (resumeData.achievements) {
+    metricCount += resumeData.achievements.length * 2;
+  }
+  
+  quantifiableAchievements = Math.min(20, metricCount * 2);
+  if (quantifiableAchievements === 20) {
+    explanation.push("+ Strong use of quantifiable metrics and numbers.");
+  } else if (quantifiableAchievements > 0) {
+    explanation.push("+ Some quantifiable metrics found, but could use more.");
+  } else {
+    explanation.push("- No quantifiable metrics found (e.g., %, $, revenue).");
+  }
+
+  // 3. Formatting Consistency (Max 20)
+  let formatScore = 20;
+  if (!resumeData.header.email || !resumeData.header.phone) {
+    formatScore -= 10;
+    explanation.push("- Missing email or phone number in contact info.");
+  }
+  if (!resumeData.skills || resumeData.skills.length < 5) {
+    formatScore -= 10;
+    explanation.push("- Too few skills listed (aim for at least 5-10 core skills).");
+  }
+  formattingConsistency = Math.max(0, formatScore);
+
+  // 4. LLM Qualitative / Keyword Penalty (Max 30)
+  let qualitativeScore = 30;
+  const ai = resumeData.ai_analysis;
+  if (ai) {
+    if (ai.weaknesses && ai.weaknesses.length > 0) {
+      qualitativeScore -= (ai.weaknesses.length * 3);
+    }
+    if (ai.missingSkills && ai.missingSkills.length > 0) {
+      qualitativeScore -= (ai.missingSkills.length * 2);
+    }
+    if (ai.grammarAnalysis && ai.grammarAnalysis.toLowerCase().includes("poor") || ai.grammarAnalysis?.toLowerCase().includes("error")) {
+      qualitativeScore -= 10;
+      explanation.push("- LLM flagged grammar or tense consistency errors.");
+    }
+  }
+  llmQualitative = Math.max(0, qualitativeScore);
+  
+  const score = Math.round(sectionCompleteness + quantifiableAchievements + formattingConsistency + llmQualitative);
+
+  return {
+    score,
+    breakdown: {
+      sectionCompleteness,
+      quantifiableAchievements,
+      formattingConsistency,
+      llmQualitative,
+      explanation
+    }
+  };
+}
+
 export async function analyzeResumeText(text: string): Promise<AnalyzeResumeResponse> {
   const prompt = `
 You are an expert ATS (Applicant Tracking System) parser and an elite Technical Recruiter. 
@@ -63,7 +155,6 @@ The JSON object MUST contain the following structure:
     }
   ],
   "ai_analysis": {
-    "atsScore": A number from 0 to 100 indicating how well this resume would pass an ATS filter (based on formatting clarity, keyword density, and quantifiable results).,
     "extractedSkills": ["Array of the top most relevant skills"],
     "missingSkills": ["Array of skills that are typically expected for this candidate's inferred target role but are missing from the resume"],
     "summary": "A brutally honest, 2-sentence recruiter evaluation of this resume.",
@@ -99,22 +190,71 @@ ${text}
     }
     
     // Strip possible markdown code blocks if the model ignored the mime type
-    responseText = responseText.replace(/```json/gi, '').replace(/```/g, '').trim();
+    responseText = responseText.replace(/\\\`\\\`\\\`json/gi, '').replace(/\\\`\\\`\\\`/g, '').trim();
 
     const resumeData = JSON.parse(responseText) as ResumeData;
+    
+    // Calculate Hybrid ATS Score
+    const hybridScoring = calculateHybridAtsScore(resumeData);
+    
+    if (!resumeData.ai_analysis) {
+      resumeData.ai_analysis = {} as any;
+    }
+    resumeData.ai_analysis!.atsScore = hybridScoring.score;
+    resumeData.ai_analysis!.hybridAtsBreakdown = hybridScoring.breakdown;
+
     return { success: true, data: resumeData };
   } catch (error: unknown) {
-    console.error("Error analyzing resume:", error);
     let errorMessage = "Failed to analyze resume text. Please try again.";
     
-    if (error instanceof Error) {
-      if (error.message.includes("429") || error.message.includes("quota") || error.message.includes("RESOURCE_EXHAUSTED")) {
-        errorMessage = "AI processing quota exceeded. Please try again later or check your API keys.";
-      } else {
-        errorMessage = error.message;
+    if (error instanceof Error || typeof error === 'object') {
+      const errString = (error as Error)?.toString() || "";
+      if (errString.includes("429") || errString.includes("quota") || errString.includes("RESOURCE_EXHAUSTED")) {
+        const canUseMock = process.env.NODE_ENV === 'development' || process.env.ENABLE_MOCK_AI === 'true' || process.env.NEXT_PUBLIC_IS_E2E === 'true';
+        if (!canUseMock) {
+          return { success: false, error: "AI processing quota exceeded. Please try again later or check your API keys." };
+        }
+        
+        console.warn("AI Quota completely exhausted in Resume Analyzer. Using fallback mock resume.");
+        
+        // Use a mock resume so the user is not blocked
+        const mockResume: ResumeData = {
+          header: { name: "Jane Developer", email: "jane@example.com", phone: "555-0100", location: "San Francisco, CA" },
+          summary: "A passionate Software Engineer with 5+ years of experience building scalable web applications.",
+          experience: [
+            { id: "exp-1", title: "Senior Engineer", company: "TechCorp", location: "Remote", startDate: "Jan 2020", endDate: "Present", description: "Led a team of 5 engineers to rebuild the core platform, increasing performance by 40% and revenue by $1M." }
+          ],
+          education: [
+            { id: "edu-1", degree: "B.S. Computer Science", school: "State University", location: "City, ST", startDate: "2015", endDate: "2019" }
+          ],
+          skills: ["React", "TypeScript", "Node.js", "Python", "SQL"],
+          projects: [],
+          achievements: ["Employee of the Year 2021"],
+          certifications: [],
+          links: [],
+          ai_analysis: {
+            atsScore: 0,
+            extractedSkills: ["React", "TypeScript", "Node.js"],
+            missingSkills: ["AWS", "Docker"],
+            summary: "Strong candidate with solid frontend experience but could improve cloud infrastructure keywords.",
+            strengths: ["Great quantifiable metrics", "Modern tech stack"],
+            weaknesses: ["No cloud experience listed"],
+            grammarAnalysis: "Perfect grammar and tense consistency.",
+            keywordOptimization: ["AWS", "Docker", "CI/CD"],
+            actionableSuggestions: ["Add a cloud certification", "Flesh out project descriptions"]
+          }
+        };
+        
+        const hybridScoring = calculateHybridAtsScore(mockResume);
+        mockResume.ai_analysis!.atsScore = hybridScoring.score;
+        mockResume.ai_analysis!.hybridAtsBreakdown = hybridScoring.breakdown;
+        
+        return { success: true, data: mockResume };
       }
+      errorMessage = (error as Error).message || errorMessage;
     }
     
+    console.error("Error analyzing resume:", error);
     return { success: false, error: errorMessage };
   }
 }

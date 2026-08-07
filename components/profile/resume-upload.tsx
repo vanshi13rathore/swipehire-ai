@@ -8,7 +8,7 @@ import { UploadCloud, FileText, Briefcase, GraduationCap, FileCheck } from "luci
 import { uploadResume } from "@/lib/supabase/storage";
 import { supabase } from "@/lib/supabase/client";
 
-import { extractTextFromPDF } from "@/lib/ai/pdf";
+
 import { analyzeResumeText } from "@/lib/ai/resume-analyzer";
 import { createResume } from "@/lib/supabase/resume-builder";
 import { revalidateMatches } from "@/lib/actions/revalidate";
@@ -50,6 +50,7 @@ export function ResumeUpload() {
       
       // 2. Extract text locally in browser
       setUploadState("extracting");
+      const { extractTextFromPDF } = await import("@/lib/ai/pdf");
       const text = await extractTextFromPDF(file);
       
       // 3. Run AI Analysis on Server
@@ -63,7 +64,7 @@ export function ResumeUpload() {
       
       // 4. Save structured result to Database
       setUploadState("saving");
-      const newResume = await createResume(file.name, resumeData, true);
+      const newResume = await createResume(file.name, resumeData, false);
       
       // 5. Invalidate matching cache
       await revalidateMatches();

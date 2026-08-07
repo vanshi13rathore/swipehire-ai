@@ -46,6 +46,8 @@ export function JobDetails({
     checkApplied();
   }, [id]);
 
+  const [isSaving, setIsSaving] = React.useState(false);
+
   const handleApply = async () => {
     if (applied) return;
     
@@ -194,8 +196,28 @@ export function JobDetails({
                 >
                   {applied ? "Applied ✓" : "Apply Now"}
                 </Button>
-                <Button variant="outline" size="xl" fullWidth className="font-bold text-base shadow-sm" leftIcon={<Bookmark className="w-4 h-4" />}>
-                  Save Job
+                <Button 
+                  variant="outline" 
+                  size="xl" 
+                  fullWidth 
+                  className="font-bold text-base shadow-sm" 
+                  leftIcon={<Bookmark className="w-4 h-4" />}
+                  onClick={async () => {
+                    if (isSaving) return;
+                    setIsSaving(true);
+                    try {
+                       const { saveJobAction } = await import("@/lib/actions/jobs");
+                       await saveJobAction(job as Job);
+                       // We could add a toast here
+                    } catch (e) {
+                       console.error(e);
+                    } finally {
+                       setIsSaving(false);
+                    }
+                  }}
+                  disabled={isSaving}
+                >
+                  {isSaving ? "Saving..." : "Save Job"}
                 </Button>
               </div>
             </Card>

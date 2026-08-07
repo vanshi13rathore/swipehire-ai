@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/dashboard/', '/career-copilot/', '/mock-interview/', '/resume-builder/', '/saved-jobs/', '/applications/'],
     },
-    sitemap: 'https://swipehire.com/sitemap.xml',
+    sitemap: 'https://swipehire.vercel.app/sitemap.xml',
   }
 }

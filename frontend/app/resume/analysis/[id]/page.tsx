@@ -38,3 +38,5 @@ export default async function ResumeAnalysisPage({ params }: { params: Promise<{
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";

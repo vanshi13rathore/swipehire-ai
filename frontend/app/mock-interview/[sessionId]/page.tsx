@@ -65,3 +65,5 @@ export default async function InterviewSessionPage({ params }: PageProps) {
 
   return <InterviewRunner initialSession={session} topJobs={topJobs} />;
 }
+
+export const dynamic = "force-dynamic";

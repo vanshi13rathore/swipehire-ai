@@ -82,3 +82,5 @@ export default async function DashboardPage() {
 
   return <DashboardView data={aggregatedData} insights={insights} />;
 }
+
+export const dynamic = "force-dynamic";

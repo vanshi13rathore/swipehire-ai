@@ -167,3 +167,5 @@ function JobCategorySection({ title, icon, jobs, categoryName }: { title: string
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";

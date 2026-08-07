@@ -83,3 +83,5 @@ export default async function RecommendationsPage() {
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";

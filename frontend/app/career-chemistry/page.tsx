@@ -91,3 +91,5 @@ export default async function CareerChemistryPage() {
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";

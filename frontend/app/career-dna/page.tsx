@@ -64,3 +64,5 @@ export default async function CareerDNAPage() {
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";
